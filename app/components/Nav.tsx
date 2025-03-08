@@ -44,7 +44,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-export default function Navbar2() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Navbar2() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.5 }}
-      className={`absolute left-0 right-0 top-0 z-50 mx-auto max-w-6xl rounded-b transition-all duration-1000 mt-7`}
+      className={`absolute left-0 right-0 top-0 z-50 mx-auto mt-7 max-w-6xl rounded-b transition-all duration-1000`}
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex h-16 justify-between">
@@ -74,13 +74,12 @@ export default function Navbar2() {
               alt="Logo"
               width={40}
               height={40}
-              className={`transition-all duration-300 size-14`}
+              className={`size-14 transition-all duration-300`}
             />
             <span
-              className={`font-semibold transition-all duration-300 ml-6 text-5xl text-gray-900`}
+              className={`ml-6 text-5xl font-semibold text-gray-900 transition-all duration-300`}
             >
               fra<span className="text-primary">Ma</span>
-       
             </span>
           </Link>
 
@@ -90,7 +89,7 @@ export default function Navbar2() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative overflow-hidden px-4 py-2 text-sm font-medium ${
+                className={`relative overflow-hidden px-4 py-2 text-sm font-medium uppercase ${
                   link.name === "Kontakt"
                     ? "group rounded-b-lg border border-primary"
                     : "text-gray-700 hover:text-primary"

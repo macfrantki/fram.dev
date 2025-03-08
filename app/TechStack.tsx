@@ -71,11 +71,10 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-grotesk mb-16 text-6xl font-bold text-white md:text-8xl"
+          className="mb-16 font-grotesk text-6xl font-bold text-white md:text-8xl"
         >
-          Nasze 
+          Nasze
           <span className="text-primary">Technologie</span>
-     
         </motion.h2>
 
         <div className="space-y-24">
@@ -110,7 +109,7 @@ export default function TechStack() {
                     }}
                     className="group flex flex-col items-center gap-4"
                   >
-                    <div className="group-hover:text-primary text-gray-600 transition-colors duration-300">
+                    <div className="text-gray-600 transition-colors duration-300 group-hover:text-primary">
                       {tech.icon}
                     </div>
                     <span className="text-sm text-gray-500 transition-colors duration-300 group-hover:text-gray-400">

@@ -47,8 +47,14 @@ export default function Footer() {
               className="space-y-6"
             >
               <Link href="/" className="flex items-center">
-                <Image src="/icon.png" alt="Logo" className="w-10 h-10 mr-4" width={40} height={40} />
-                <span className="font-semibold text-white text-3xl">
+                <Image
+                  src="/icon.png"
+                  alt="Logo"
+                  className="mr-4 h-10 w-10"
+                  width={40}
+                  height={40}
+                />
+                <span className="text-3xl font-semibold text-white">
                   fra<span className="text-primary">Ma</span>
                   <span>.dev</span>
                 </span>

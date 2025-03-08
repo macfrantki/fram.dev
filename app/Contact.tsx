@@ -23,7 +23,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden  py-32">
+    <section className="relative w-full overflow-hidden py-32">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="flex flex-col lg:flex-row lg:gap-20">
           {/* Title Section - 1/3 width */}
@@ -33,7 +33,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-grotesk mb-6 text-6xl font-bold lg:text-8xl"
+              className="mb-6 font-grotesk text-6xl font-bold lg:text-8xl"
             >
               Let's <span className="text-primary">Talk</span>
             </motion.h2>
@@ -44,8 +44,9 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Ready to start your project? We're here to help bring your vision to life.
-              Drop us a message and let's create something amazing together.
+              Ready to start your project? We're here to help bring your vision
+              to life. Drop us a message and let's create something amazing
+              together.
             </motion.p>
           </div>
 
@@ -57,7 +58,10 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-grotesk lg:w-2/3"
           >
-            <form onSubmit={handleSubmit} className="space-y-8 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-8 rounded-lg">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-8 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-8"
+            >
               <div className="flex w-full gap-6">
                 <div className="w-1/2">
                   <input
@@ -96,8 +100,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => {
                     setFormData({ ...formData, message: e.target.value });
-                    e.target.style.height = 'auto';
-                    e.target.style.height = e.target.scrollHeight + 'px';
+                    e.target.style.height = "auto";
+                    e.target.style.height = e.target.scrollHeight + "px";
                   }}
                   className="w-full resize-none border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                   required
@@ -105,11 +109,11 @@ export default function Contact() {
               </div>
 
               <div className="flex justify-end">
-                <button className="border-primary text-primary group relative flex items-center overflow-hidden rounded-b-lg border-2 bg-transparent px-8 py-4 text-xl font-semibold transition-all hover:text-white">
+                <button className="group relative flex items-center overflow-hidden rounded-b-lg border-2 border-primary bg-transparent px-8 py-4 text-xl font-semibold text-primary transition-all hover:text-white">
                   <span className="relative z-10">Send Message</span>
-                  <div className="bg-primary absolute inset-0 translate-y-full transform transition-transform duration-300 ease-out group-hover:translate-y-0"></div>
+                  <div className="absolute inset-0 translate-y-full transform bg-primary transition-transform duration-300 ease-out group-hover:translate-y-0"></div>
                   <svg
-                    className="h-5 w-5 ml-3 relative z-10"
+                    className="relative z-10 ml-3 h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
