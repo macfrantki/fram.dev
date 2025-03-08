@@ -46,18 +46,6 @@ const CloseIcon = () => (
 
 export default function Navbar2() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollThreshold = 25;
-      setIsScrolled(window.scrollY > scrollThreshold);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -75,11 +63,7 @@ export default function Navbar2() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.5 }}
-      className={`fixed left-0 right-0 top-0 z-50 mx-auto max-w-6xl rounded-b transition-all duration-1000 ${
-        isScrolled
-          ? "mt-0 bg-stone-900/90 text-white backdrop-blur lg:px-10"
-          : "mt-7 px-4"
-      }`}
+      className={`absolute left-0 right-0 top-0 z-50 mx-auto max-w-6xl rounded-b transition-all duration-1000 mt-7`}
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex h-16 justify-between">
@@ -90,25 +74,13 @@ export default function Navbar2() {
               alt="Logo"
               width={40}
               height={40}
-              className={`transition-all duration-300 ${
-                isScrolled ? "h-10 w-auto" : "h-14 w-auto"
-              }`}
+              className={`transition-all duration-300 size-14`}
             />
             <span
-              className={`font-semibold transition-all duration-300 ${
-                isScrolled
-                  ? "ml-4 text-3xl text-white"
-                  : "ml-6 text-5xl text-gray-900"
-              }`}
+              className={`font-semibold transition-all duration-300 ml-6 text-5xl text-gray-900`}
             >
               fra<span className="text-primary">Ma</span>
-              <span
-                className={`transition-all duration-[2000ms] ${
-                  isScrolled ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                .dev
-              </span>
+       
             </span>
           </Link>
 
@@ -121,9 +93,7 @@ export default function Navbar2() {
                 className={`relative overflow-hidden px-4 py-2 text-sm font-medium ${
                   link.name === "Kontakt"
                     ? "group rounded-b-lg border border-primary"
-                    : isScrolled
-                      ? "text-white hover:text-primary"
-                      : "text-gray-700 hover:text-primary"
+                    : "text-gray-700 hover:text-primary"
                 }`}
               >
                 <span
