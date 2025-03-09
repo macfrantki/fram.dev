@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import '@/styles/globals.css';
@@ -11,9 +11,16 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'fraMa.dev',
-  description: 'Webdev Studio z  szerokim spektrum usług',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  title: 'fram.dev',
+  description: 'Webdev Studio z szerokim spektrum usług',
+  metadataBase: new URL('https://fram.dev'),
+};
+
+// Separate viewport export as recommended by Next.js
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

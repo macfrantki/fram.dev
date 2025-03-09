@@ -5,9 +5,9 @@
  * It ensures that Husky hooks are properly installed and executable.
  */
 
-const { execSync } = require('child_process');
-const { existsSync, chmodSync } = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import { existsSync, chmodSync } from 'fs';
+import path from 'path';
 
 console.log('🔧 Setting up Git hooks...');
 
