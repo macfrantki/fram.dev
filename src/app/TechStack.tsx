@@ -78,7 +78,7 @@ export default function TechStack() {
         </motion.h2>
 
         <div className="space-y-24">
-          {techStack.map((category, categoryIndex) => (
+          {techStack.map((category, _categoryIndex) => (
             <div key={category.title} className="space-y-12">
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}

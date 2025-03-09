@@ -19,7 +19,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
-    console.log(formData);
+    console.warn(formData);
   };
 
   return (
@@ -32,10 +32,10 @@ export default function Contact() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="mb-6 font-grotesk text-6xl font-bold lg:text-8xl"
             >
-              Let's <span className="text-primary">Talk</span>
+              Let&apos;s <span className="text-primary">Talk</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -44,9 +44,9 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Ready to start your project? We're here to help bring your vision
-              to life. Drop us a message and let's create something amazing
-              together.
+              Ready to start your project? We&apos;re here to help bring your
+              vision to life. Drop us a message and let&apos;s create something
+              amazing together.
             </motion.p>
           </div>
 

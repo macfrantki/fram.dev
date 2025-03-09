@@ -7,7 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky",
+    "postinstall": "node -e \"try { require('fs').accessSync('.git', require('fs').constants.F_OK); process.exit(0); } catch (e) { process.exit(1); }\" && npm run prepare || echo \"Skipping husky setup (no Git repository found)\"",
+    "setup-hooks": "node scripts/setup-hooks.js",
+    "test": "echo \"No tests yet - will use Cypress later\"",
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -30,6 +37,18 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "cross-env": "^7.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^9.0.6",
+    "lint-staged": "^15.2.0",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3"
   }
 }
