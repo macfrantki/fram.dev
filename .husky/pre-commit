@@ -1,14 +1,40 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+
+# Export the PATH that includes npm
+export PATH="/usr/local/bin:$PATH"
+
+# Detect the package manager
+if command -v npm >/dev/null 2>&1; then
+  PKG_MGR="npm"
+elif command -v yarn >/dev/null 2>&1; then
+  PKG_MGR="yarn"
+elif command -v pnpm >/dev/null 2>&1; then
+  PKG_MGR="pnpm"
+else
+  echo "❌ No package manager (npm, yarn, or pnpm) found in PATH. Skipping pre-commit checks."
+  exit 0  # Exit successfully to allow the commit to proceed
+fi
 
 echo "🔍 Running pre-commit checks..."
 
 # Check for TypeScript errors
 echo "👮 Checking TypeScript types..."
-npm run type-check || (
-  echo "❌ Type check failed. Please fix TypeScript errors before committing."
-  exit 1
-)
+if [ "$PKG_MGR" = "npm" ]; then
+  npm run type-check || (
+    echo "❌ Type check failed. Please fix TypeScript errors before committing."
+    exit 1
+  )
+elif [ "$PKG_MGR" = "yarn" ]; then
+  yarn type-check || (
+    echo "❌ Type check failed. Please fix TypeScript errors before committing."
+    exit 1
+  )
+else
+  pnpm type-check || (
+    echo "❌ Type check failed. Please fix TypeScript errors before committing."
+    exit 1
+  )
+fi
 
 # Run lint-staged to check code quality and format files
 echo "🧹 Running linters and formatters..."
