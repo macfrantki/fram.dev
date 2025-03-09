@@ -51,7 +51,6 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "ts-node": "^10.9.2",
-    "@types/postcss-load-config": "^4.0.3",
     "@types/lint-staged": "^13.3.0"
   }
 }
