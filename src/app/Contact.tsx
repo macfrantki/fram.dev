@@ -10,18 +10,6 @@ interface FormData {
 }
 
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.warn(formData);
-  };
-
   return (
     <section className="relative w-full overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="container mx-auto max-w-6xl px-4">
@@ -58,7 +46,7 @@ export default function Contact() {
             className="font-grotesk lg:w-2/3"
           >
             <form
-              onSubmit={handleSubmit}
+              data-netlify="true"
               name="contact"
               className="space-y-6 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-4 sm:space-y-8 sm:p-6 md:p-8"
             >
@@ -69,8 +57,6 @@ export default function Contact() {
                     type="text"
                     id="name"
                     placeholder="Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
@@ -81,8 +67,6 @@ export default function Contact() {
                     type="email"
                     id="email"
                     placeholder="Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
@@ -94,12 +78,6 @@ export default function Contact() {
                   id="message"
                   placeholder="Message"
                   rows={4}
-                  value={formData.message}
-                  onChange={(e) => {
-                    setFormData({ ...formData, message: e.target.value });
-                    e.target.style.height = 'auto';
-                    e.target.style.height = e.target.scrollHeight + 'px';
-                  }}
                   className="w-full resize-none border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                   required
                 />

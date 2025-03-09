@@ -2,8 +2,9 @@
   "name": "frama",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,8 +12,8 @@
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "prepare": "husky",
-    "postinstall": "node -e \"try { require('fs').accessSync('.git', require('fs').constants.F_OK); process.exit(0); } catch (e) { process.exit(1); }\" && npm run prepare || echo \"Skipping husky setup (no Git repository found)\"",
-    "setup-hooks": "node scripts/setup-hooks.js",
+    "postinstall": "node -e \"import { accessSync, constants } from 'fs'; try { accessSync('.git', constants.F_OK); process.exit(0); } catch (e) { process.exit(1); }\" && npm run prepare || echo \"Skipping husky setup (no Git repository found)\"",
+    "setup-hooks": "ts-node --esm scripts/setup-hooks.ts",
     "test": "echo \"No tests yet - will use Cypress later\"",
     "commitlint": "commitlint --edit"
   },
@@ -49,6 +50,8 @@
     "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
     "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3"
+    "@commitlint/config-conventional": "^18.4.3",
+    "ts-node": "^10.9.2",
+    "@types/lint-staged": "^13.3.0"
   }
 }

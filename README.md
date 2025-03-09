@@ -21,12 +21,14 @@ A modern Next.js project with professional configuration and best practices.
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/frama.git
    cd frama
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    # or
@@ -36,6 +38,7 @@ A modern Next.js project with professional configuration and best practices.
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.example .env.local
    ```
@@ -105,6 +108,10 @@ The GitHub Actions workflow in `.github/workflows/deploy.yml` demonstrates how t
 - [React Documentation](https://react.dev)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
+
+## Website
+
+Production website is available at [fram.dev](https://fram.dev)
 
 ## License
 
