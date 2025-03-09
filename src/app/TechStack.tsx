@@ -76,7 +76,7 @@ export default function TechStack() {
           Nasze <span className="text-primary">Technologie</span>
         </motion.h2>
 
-        <div className="space-y-12 sm:space-y-16 md:space-y-24">
+        <div className="mx-auto space-y-12 sm:space-y-16 md:space-y-24">
           {techStack.map((category, _categoryIndex) => (
             <div key={category.title} className="space-y-6 sm:space-y-8 md:space-y-12">
               <motion.h3
@@ -94,7 +94,7 @@ export default function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:gap-12 lg:grid-cols-8"
+                className="grid grid-cols-3 gap-6 sm:grid-cols-4 sm:gap-8 md:gap-12 lg:grid-cols-8"
               >
                 {category.technologies.map((tech, techIndex) => (
                   <motion.div
