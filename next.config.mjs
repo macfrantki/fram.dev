@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
+  distDir: 'out',
   images: {
     remotePatterns: [
       {
@@ -18,6 +20,7 @@ const nextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true, // Required for static export
   },
   webpack: (config) => {
     const rules = config.module.rules;
