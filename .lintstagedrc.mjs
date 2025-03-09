@@ -1,39 +1,40 @@
-import { createRequire } from 'module';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+// @ts-check
+import { readFile, stat } from 'fs/promises';
+import { resolve } from 'path';
 
-const require = createRequire(import.meta.url);
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const config = {
+  // Run ESLint and Prettier on TypeScript files
+  "src/**/*.{ts,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  
+  // Format CSS files with Prettier
+  "src/**/*.css": [
+    "prettier --write"
+  ],
+  
+  // Format JSON, YAML, and Markdown files with Prettier
+  "**/*.{json,md,yaml,yml}": [
+    "prettier --write"
+  ],
+  
+  // Make sure no large files are committed
+  "**/*.{png,jpeg,jpg,gif,svg}": async (files) => {
+    const maxSize = 500 * 1024; // 500KB
+    const commands = [];
+    
+    for (const file of files) {
+      const filePath = resolve(file);
+      const fileStats = await stat(filePath);
+      if (fileStats.size > maxSize) {
+        console.error(`Error: ${file} is larger than ${maxSize / 1024}KB`);
+        process.exit(1);
+      }
+    }
+    
+    return commands;
+  },
+};
 
-// Import TypeScript configuration
-try {
-  // Try to import using ts-node
-  require('ts-node').register({
-    compilerOptions: {
-      module: 'commonjs',
-      esModuleInterop: true,
-    },
-  });
-  
-  const tsConfigPath = resolve(__dirname, './.lintstagedrc.ts');
-  const config = require(tsConfigPath).default;
-  
-  export default config;
-} catch (error) {
-  // Fallback configuration if ts-node import fails
-  /** @type {import('lint-staged').Config} */
-  const fallbackConfig = {
-    "src/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "src/**/*.css": [
-      "prettier --write"
-    ],
-    "**/*.{json,md,yaml,yml}": [
-      "prettier --write"
-    ],
-  };
-  
-  export default fallbackConfig;
-} 
+export default config; 
