@@ -6,12 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --config ./config/eslint.config.mjs .",
-    "format": "prettier --config ./config/.prettierrc --write .",
-    "type-check": "tsc --project ./config/tsconfig.json --noEmit",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
     "prepare": "husky",
+    "postinstall": "node -e \"try { require('fs').accessSync('.git', require('fs').constants.F_OK); process.exit(0); } catch (e) { process.exit(1); }\" && npm run prepare || echo \"Skipping husky setup (no Git repository found)\"",
+    "setup-hooks": "node scripts/setup-hooks.js",
     "test": "echo \"No tests yet - will use Cypress later\"",
-    "commitlint": "commitlint --config ./config/commitlint.config.js --edit"
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -47,14 +49,5 @@
     "lint-staged": "^15.2.0",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "eslint --config ./config/eslint.config.mjs --fix",
-      "prettier --config ./config/.prettierrc --write"
-    ],
-    "**/*.{css,json,md}": [
-      "prettier --config ./config/.prettierrc --write"
-    ]
   }
 }
