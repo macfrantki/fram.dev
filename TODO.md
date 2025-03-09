@@ -17,4 +17,4 @@
 ## Documentation
 
 - [ ] Add testing documentation once Cypress is integrated
-- [ ] Document testing best practices and conventions 
+- [ ] Document testing best practices and conventions
