@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 const footerLinks = [
   {
-    title: "Services",
+    title: 'Services',
     links: [
-      { name: "Development", href: "#" },
-      { name: "Design", href: "#" },
-      { name: "E-commerce", href: "#" },
-      { name: "Mobile", href: "#" },
-      { name: "Consulting", href: "#" },
+      { name: 'Development', href: '#' },
+      { name: 'Design', href: '#' },
+      { name: 'E-commerce', href: '#' },
+      { name: 'Mobile', href: '#' },
+      { name: 'Consulting', href: '#' },
     ],
   },
   {
-    title: "Company",
+    title: 'Company',
     links: [
-      { name: "About", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact", href: "#" },
+      { name: 'About', href: '#' },
+      { name: 'Blog', href: '#' },
+      { name: 'Careers', href: '#' },
+      { name: 'Contact', href: '#' },
     ],
   },
   {
-    title: "Legal",
+    title: 'Legal',
     links: [
-      { name: "Privacy", href: "#" },
-      { name: "Terms", href: "#" },
+      { name: 'Privacy', href: '#' },
+      { name: 'Terms', href: '#' },
     ],
   },
 ];
@@ -60,8 +60,7 @@ export default function Footer() {
                 </span>
               </Link>
               <p className="text-sm text-gray-400">
-                Creating digital experiences that transform businesses and
-                inspire innovation.
+                Creating digital experiences that transform businesses and inspire innovation.
               </p>
               <div className="flex items-center gap-4">
                 <Link
@@ -114,22 +113,13 @@ export default function Footer() {
         >
           <p>© 2024 FRAMA. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link
-              href="#"
-              className="transition-colors duration-300 hover:text-primary"
-            >
+            <Link href="#" className="transition-colors duration-300 hover:text-primary">
               LinkedIn
             </Link>
-            <Link
-              href="#"
-              className="transition-colors duration-300 hover:text-primary"
-            >
+            <Link href="#" className="transition-colors duration-300 hover:text-primary">
               Twitter
             </Link>
-            <Link
-              href="#"
-              className="transition-colors duration-300 hover:text-primary"
-            >
+            <Link href="#" className="transition-colors duration-300 hover:text-primary">
               Instagram
             </Link>
           </div>

@@ -14,6 +14,7 @@ Thank you for considering contributing to Frama! This document outlines the stan
 ## Code Style
 
 This project uses:
+
 - ESLint for JavaScript/TypeScript linting
 - Prettier for code formatting
 - TypeScript for type checking
@@ -47,6 +48,7 @@ Each commit message consists of a **header**, an optional **body**, and an optio
 The **header** is mandatory and must conform to the following format:
 
 - **type**: What kind of change this commit is making. Must be one of:
+
   - **build**: Changes that affect the build system or external dependencies
   - **chore**: Maintenance tasks and other non-user-facing changes
   - **ci**: Changes to CI configuration files and scripts
@@ -103,4 +105,4 @@ npm test
 
 ## Questions?
 
-Feel free to open an issue with questions or suggestions about the contributing process. 
+Feel free to open an issue with questions or suggestions about the contributing process.

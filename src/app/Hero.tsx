@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BackgroundCircles } from '@/components/BackgroundCircles';
+// import { BackgroundCircles } from '@/components/BackgroundCircles';
 import Image from 'next/image';
 import Button from '@/components/Button';
 
@@ -41,7 +41,7 @@ export default function Hero() {
     <div className="container relative mx-auto max-w-6xl px-4">
       {/* Mobile version - Only visible on small screens */}
       <div className="relative flex min-h-[100vh] flex-col sm:hidden">
-        <BackgroundCircles />
+        {/* <BackgroundCircles /> */}
 
         <div className="flex flex-1 flex-col items-center justify-center px-4 pt-16">
           <motion.div
@@ -106,7 +106,7 @@ export default function Hero() {
 
       {/* Desktop version - Hidden on small screens */}
       <motion.div className="container relative mx-auto flex hidden min-h-screen flex-col justify-center px-4 pt-20 sm:block">
-        <BackgroundCircles />
+        {/* <BackgroundCircles /> */}
         <motion.div className="mt-20 w-full">
           {' '}
           {/* Added margin top to prevent navbar overlap */}

@@ -47,24 +47,26 @@ try {
   const preCommitPath = path.join(huskyDir, 'pre-commit');
   if (!existsSync(preCommitPath)) {
     console.log('📝 Creating pre-commit hook...');
-    execSync('npx husky add .husky/pre-commit "echo \\"🔍 Running pre-commit checks...\\" && npm run type-check || (echo \\"❌ Type check failed.\\" && exit 1) && npx lint-staged || (echo \\"❌ Linting failed.\\" && exit 1) && echo \\"✅ Pre-commit checks passed!\\""', { stdio: 'inherit' });
+    execSync(
+      'npx husky add .husky/pre-commit "echo \\"🔍 Running pre-commit checks...\\" && npm run type-check || (echo \\"❌ Type check failed.\\" && exit 1) && npx lint-staged || (echo \\"❌ Linting failed.\\" && exit 1) && echo \\"✅ Pre-commit checks passed!\\""',
+      { stdio: 'inherit' }
+    );
   }
 
   // Create commit-msg hook if it doesn't exist
   const commitMsgPath = path.join(huskyDir, 'commit-msg');
   if (!existsSync(commitMsgPath)) {
     console.log('📝 Creating commit-msg hook...');
-    execSync('npx husky add .husky/commit-msg "echo \\"📝 Validating commit message format...\\" && npx --no -- commitlint --edit $1 || (echo \\"❌ Commit message validation failed.\\" && exit 1) && echo \\"✅ Commit message format is valid!\\""', { stdio: 'inherit' });
+    execSync(
+      'npx husky add .husky/commit-msg "echo \\"📝 Validating commit message format...\\" && npx --no -- commitlint --edit $1 || (echo \\"❌ Commit message validation failed.\\" && exit 1) && echo \\"✅ Commit message format is valid!\\""',
+      { stdio: 'inherit' }
+    );
   }
 
   // Make sure hook files are executable
-  const hookFiles = [
-    '.husky/pre-commit',
-    '.husky/commit-msg',
-    '.husky/_/husky.sh'
-  ];
+  const hookFiles = ['.husky/pre-commit', '.husky/commit-msg', '.husky/_/husky.sh'];
 
-  hookFiles.forEach(file => {
+  hookFiles.forEach((file) => {
     const filePath = path.join(process.cwd(), file);
     if (existsSync(filePath)) {
       console.log(`📎 Making ${file} executable...`);
@@ -85,4 +87,4 @@ try {
 } catch (error) {
   console.error('❌ Error setting up git hooks:', error);
   process.exit(1);
-} 
+}

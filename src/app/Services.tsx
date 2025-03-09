@@ -33,7 +33,7 @@ const services: Services = {
         description: 'Skalowalne API i architektury serwerowe dostosowane do Twoich potrzeb',
       },
       {
-        title: 'Performance Optimizatio',
+        title: 'Performance Optimization',
         description: 'Optymalizacja wydajności i czasu ładowania aplikacji webowych',
       },
       {

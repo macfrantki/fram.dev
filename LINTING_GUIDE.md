@@ -30,11 +30,11 @@ Replace `console.log` statements with `console.warn` or `console.error`, or remo
 
 ```jsx
 // ❌ Wrong
-console.log("This data was submitted:", data);
+console.log('This data was submitted:', data);
 
 // ✅ Correct
-console.warn("This data was submitted:", data); // For development/debugging
-console.error("An error occurred:", error); // For errors
+console.warn('This data was submitted:', data); // For development/debugging
+console.error('An error occurred:', error); // For errors
 // Or remove console statements entirely in production code
 ```
 
