@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import "@/styles/globals.css";
+import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
