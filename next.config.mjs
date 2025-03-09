@@ -24,19 +24,17 @@ const nextConfig = {
   },
   webpack: (config) => {
     const rules = config.module.rules;
-    
+
     // Find the CSS rule
-    const cssRule = rules.find(
-      (rule) => rule.test && rule.test.toString().includes('css')
-    );
-    
+    const cssRule = rules.find((rule) => rule.test && rule.test.toString().includes('css'));
+
     if (cssRule) {
       // Make sure TypeScript files are included
       cssRule.test = /\.(css|ts|tsx)$/;
     }
-    
+
     return config;
   },
 };
 
-export default nextConfig; 
+export default nextConfig;
