@@ -5,8 +5,8 @@ import clsx from "clsx";
 
 export function BackgroundCircles() {
   return (
-    <div className="absolute right-0 top-0 -z-10 h-[600px] w-[600px] overflow-visible">
-      <motion.div className="absolute h-[480px] w-[480px] -translate-y-1/4 translate-x-1/4">
+    <div className="absolute right-0 top-0 -z-10 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] lg:h-[600px] lg:w-[600px] overflow-visible">
+      <motion.div className="absolute h-[240px] w-[240px] sm:h-[320px] sm:w-[320px] md:h-[400px] md:w-[400px] lg:h-[480px] lg:w-[480px] -translate-y-1/4 translate-x-1/4">
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
@@ -33,8 +33,8 @@ export function BackgroundCircles() {
       </motion.div>
 
       <div className="absolute inset-0 [mask-image:radial-gradient(90%_60%_at_50%_50%,#000_40%,transparent)]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--primary-color)/30%,transparent_70%)] blur-[120px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--primary-color)/15%,transparent)] blur-[80px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--primary-color)/30%,transparent_70%)] blur-[80px] sm:blur-[100px] md:blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--primary-color)/15%,transparent)] blur-[40px] sm:blur-[60px] md:blur-[80px]" />
       </div>
     </div>
   );
