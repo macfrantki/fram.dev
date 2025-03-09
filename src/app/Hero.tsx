@@ -1,28 +1,13 @@
 import { motion } from 'framer-motion';
-// import { BackgroundCircles } from '@/components/BackgroundCircles';
 import Image from 'next/image';
 import Button from '@/components/Button';
 
-// Prefix with underscore since it's not used directly (but used in the commit we're rebasing)
-const _ArrowIcon = () => (
-  <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M17 8l4 4m0 0l-4 4m4-4H3"
-    />
-  </svg>
-);
-
-// Stats data that can be reused in both mobile and desktop views
 const statsData = [
   { value: '10+', label: 'Lat doświadczenia' },
   { value: '50+', label: 'Ukończonych projektów' },
   { value: '100%', label: 'Zadowolonych klientów' },
 ];
 
-// Stats component that can be used in both mobile and desktop views
 const Stats = ({ className = '' }) => (
   <div className={`flex justify-center ${className}`}>
     <div className="flex space-x-8 sm:space-x-12 md:space-x-16">
@@ -39,10 +24,8 @@ const Stats = ({ className = '' }) => (
 export default function Hero() {
   return (
     <div className="container relative mx-auto max-w-6xl px-4">
-      {/* Mobile version - Only visible on small screens */}
+      {/* Mobile */}
       <div className="relative flex min-h-[100vh] flex-col sm:hidden">
-        {/* <BackgroundCircles /> */}
-
         <div className="flex flex-1 flex-col items-center justify-center px-4 pt-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -98,18 +81,16 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
-          className="mb-20 mt-12" // Increased bottom margin for more space
+          className="mb-20 mt-12"
         >
           <Stats />
         </motion.div>
       </div>
 
-      {/* Desktop version - Hidden on small screens */}
+      {/* Desktop version */}
       <motion.div className="container relative mx-auto flex hidden min-h-screen flex-col justify-center px-4 pt-20 sm:block">
-        {/* <BackgroundCircles /> */}
         <motion.div className="mt-20 w-full">
           {' '}
-          {/* Added margin top to prevent navbar overlap */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
