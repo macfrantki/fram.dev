@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Run lint-staged to check code quality
-npx lint-staged 
+# Run lint-staged with config from config directory
+npx lint-staged --config ./config/.lintstagedrc.js 

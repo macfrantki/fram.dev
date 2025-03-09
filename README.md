@@ -10,6 +10,7 @@ A modern Next.js project with professional configuration and best practices.
 - **Testing**: Prepared for Cypress (to be added later)
 - **CI/CD**: GitHub Actions workflows for continuous integration and deployment
 - **Pre-commit Hooks**: Using Husky and lint-staged to ensure code quality
+- **Clean Structure**: Organized configuration files in a dedicated directory
 
 ## Getting Started
 
@@ -57,8 +58,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 frama/
 ├── .github/               # GitHub Actions workflows
 ├── .husky/                # Git hooks for pre-commit
+├── config/                # Configuration files
+│   ├── index.js           # Central configuration exports
+│   ├── eslint.config.mjs  # ESLint configuration
+│   ├── tsconfig.json      # TypeScript configuration
+│   ├── tailwind.config.js # Tailwind CSS configuration
+│   └── ...                # Other configuration files
 ├── src/                   # Source code
-│   ├── app/               # Next.js App Router
+│   ├── app/               # Next.js App Router pages
 │   ├── components/        # React components
 │   ├── contexts/          # React contexts
 │   ├── hooks/             # Custom React hooks
@@ -68,10 +75,7 @@ frama/
 │   ├── types/             # TypeScript type definitions
 │   └── utils/             # Utility functions
 ├── public/                # Static assets
-├── .env.example           # Example environment variables
-├── .eslintrc.mjs          # ESLint configuration
-├── .prettierrc            # Prettier configuration
-└── tsconfig.json          # TypeScript configuration
+└── .env.example           # Example environment variables
 ```
 
 ## Available Scripts

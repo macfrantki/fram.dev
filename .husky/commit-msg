@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Validate commit message format using commitlint
-npx --no -- commitlint --edit $1 
+npx --no -- commitlint --config ./config/commitlint.config.js --edit $1 
