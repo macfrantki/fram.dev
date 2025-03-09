@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface FormData {
   name: string;
@@ -11,9 +11,9 @@ interface FormData {
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,7 +33,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mb-4 sm:mb-6 font-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold"
+              className="mb-4 font-grotesk text-4xl font-bold sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             >
               Let&apos;s <span className="text-primary">Talk</span>
             </motion.h2>
@@ -42,11 +42,10 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg text-gray-600"
+              className="text-base text-gray-600 sm:text-lg"
             >
-              Ready to start your project? We&apos;re here to help bring your
-              vision to life. Drop us a message and let&apos;s create something
-              amazing together.
+              Ready to start your project? We&apos;re here to help bring your vision to life. Drop
+              us a message and let&apos;s create something amazing together.
             </motion.p>
           </div>
 
@@ -60,19 +59,18 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="space-y-6 sm:space-y-8 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-4 sm:p-6 md:p-8"
+              name="contact"
+              className="space-y-6 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-4 sm:space-y-8 sm:p-6 md:p-8"
             >
               {/* Name and Email fields - stack on mobile, side by side on tablet+ */}
-              <div className="flex flex-col sm:flex-row w-full gap-6">
-                <div className="w-full sm:w-1/2 mb-6 sm:mb-0">
+              <div className="flex w-full flex-col gap-6 sm:flex-row">
+                <div className="mb-6 w-full sm:mb-0 sm:w-1/2">
                   <input
                     type="text"
                     id="name"
                     placeholder="Name"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
@@ -84,9 +82,7 @@ export default function Contact() {
                     id="email"
                     placeholder="Email"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
@@ -101,8 +97,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => {
                     setFormData({ ...formData, message: e.target.value });
-                    e.target.style.height = "auto";
-                    e.target.style.height = e.target.scrollHeight + "px";
+                    e.target.style.height = 'auto';
+                    e.target.style.height = e.target.scrollHeight + 'px';
                   }}
                   className="w-full resize-none border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                   required
@@ -110,11 +106,11 @@ export default function Contact() {
               </div>
 
               <div className="flex justify-center sm:justify-end">
-                <button className="group relative flex items-center overflow-hidden rounded-b-lg border-2 border-primary bg-transparent px-4 sm:px-6 md:px-8 py-3 md:py-4 text-base sm:text-lg md:text-xl font-semibold text-primary transition-all hover:text-white">
+                <button className="group relative flex items-center overflow-hidden rounded-b-lg border-2 border-primary bg-transparent px-4 py-3 text-base font-semibold text-primary transition-all hover:text-white sm:px-6 sm:text-lg md:px-8 md:py-4 md:text-xl">
                   <span className="relative z-10">Send Message</span>
                   <div className="absolute inset-0 translate-y-full transform bg-primary transition-transform duration-300 ease-out group-hover:translate-y-0"></div>
                   <svg
-                    className="relative z-10 ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5"
+                    className="relative z-10 ml-2 h-4 w-4 sm:ml-3 sm:h-5 sm:w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
