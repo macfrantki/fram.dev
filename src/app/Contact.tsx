@@ -75,7 +75,7 @@ export default function Contact() {
                     placeholder="Email"
                     className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
-                  />
+                  />\
                 </div>
               </div>
 
