@@ -7,7 +7,7 @@ A modern Next.js project with professional configuration and best practices.
 - **Modern Stack**: Next.js 14+ with App Router, React 19, TypeScript
 - **Styling**: Tailwind CSS for responsive design
 - **Code Quality**: ESLint, Prettier, TypeScript for type checking
-- **Testing**: Jest and React Testing Library
+- **Testing**: Prepared for Cypress (to be added later)
 - **CI/CD**: GitHub Actions workflows for continuous integration and deployment
 - **Pre-commit Hooks**: Using Husky and lint-staged to ensure code quality
 
@@ -71,8 +71,6 @@ frama/
 ├── .env.example           # Example environment variables
 ├── .eslintrc.mjs          # ESLint configuration
 ├── .prettierrc            # Prettier configuration
-├── jest.config.js         # Jest configuration
-├── jest.setup.js          # Jest setup
 └── tsconfig.json          # TypeScript configuration
 ```
 
