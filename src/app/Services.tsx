@@ -18,6 +18,25 @@ interface Services {
   [key: string]: ServiceType;
 }
 
+const statsData = [
+  { value: '10+', label: 'Lat doświadczenia' },
+  { value: '50+', label: 'Ukończonych projektów' },
+  { value: '100%', label: 'Zadowolonych klientów' },
+];
+
+const Stats = ({ className = '' }) => (
+  <div className={`flex justify-center ${className}`}>
+    <div className="flex flex-col space-y-8 sm:space-x-12 md:space-x-16 lg:flex-row lg:space-x-8 lg:space-y-0">
+      {statsData.map((stat, index) => (
+        <div key={index} className="text-center">
+          <p className="text-3xl font-bold text-primary md:text-4xl">{stat.value}</p>
+          <p className="text-sm text-gray-600 md:text-base">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const services: Services = {
   development: {
     name: 'Development',
@@ -146,14 +165,14 @@ export default function Services() {
   };
 
   return (
-    <section className="relative w-screen overflow-hidden">
-      <div className="container relative mx-auto max-w-6xl">
+    <section className="relative w-screen overflow-hidden bg-gradient-to-br from-primary/10 via-transparent to-primary/5 lg:min-h-[150vh]">
+      <div className="relative mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', duration: 1 }}
-          className="container mx-auto mb-10 max-w-6xl rounded-b-lg bg-gradient-to-br from-primary/10 via-transparent to-primary/5 px-4 py-6 lg:mb-20 lg:mt-10 lg:px-8 lg:py-10"
+          className="mx-auto rounded-b-lg px-4 py-12 lg:mt-0 lg:px-8 lg:py-32"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,7 +186,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', duration: 1, delay: 0.4 }}
-              className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary"
+              className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-lg lg:font-bold"
             >
               O nas
             </motion.span>
@@ -176,10 +195,18 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', duration: 1, delay: 0.6 }}
-              className="mb-8 font-grotesk text-3xl font-bold md:text-4xl"
+              className="mb-10 font-grotesk text-3xl font-bold md:text-4xl"
             >
-              Tworzymy Cyfrową <span className="text-primary">Przyszłość</span>
+              Zaufaj wspaniałym <span className="text-primary">Ludziom</span>
             </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', duration: 0.8, delay: 1.2 }}
+              className="mb-10"
+            >
+              <Stats className="justify-start" />
+            </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -189,12 +216,13 @@ export default function Services() {
             >
               Jesteśmy dwójką pasjonatów z 10-letnim doświadczeniem w tworzeniu aplikacji webowych.
               Znajdujemy przyjemność w projektowaniu i programowaniu rozwiązań, które przynoszą
-              realną wartość naszym klientom.
+              realną wartość naszym Klientom.
             </motion.p>
           </motion.div>
+          {/* <div className="mx-auto mt-10 lg:mt-20 h-[1px] w-full lg:w-1/3 bg-primary/40"></div> */}
 
           {/* Services Section */}
-          <div className="mt-32 flex flex-col gap-16">
+          <div className="mt-10 flex flex-col gap-16 lg:mt-20">
             {/* Mobile Services View */}
             <div className="md:hidden">
               <div className="relative">
@@ -278,24 +306,11 @@ export default function Services() {
                     ))}
                   </AnimatePresence>
                 </div>
-
-                <div className="mt-12 flex justify-center">
-                  <div className="flex space-x-2">
-                    {serviceTypes.map((type, index) => (
-                      <motion.div
-                        key={type}
-                        className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                          selectedTypeIndex === index ? 'bg-primary' : 'bg-primary/20'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Desktop Services View */}
-            <div className="hidden md:block">
+            <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 p-10 py-20 shadow-xl md:block">
               <div className="mb-10 flex justify-center gap-12">
                 {Object.keys(services).map((type) => (
                   <button
@@ -350,7 +365,7 @@ export default function Services() {
                         className="group relative cursor-default"
                       >
                         <div className="relative rounded-b-lg border border-white/20 p-6 transition-all duration-500 hover:border-primary/40">
-                          <h4 className="mb-3 font-grotesk text-xl text-primary/80 duration-300 group-hover:text-primary">
+                          <h4 className="mb-1 font-grotesk text-xl text-primary/80 duration-300 group-hover:text-primary">
                             {service.title}
                           </h4>
                           <div className="mb-4 h-[1px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
@@ -362,28 +377,6 @@ export default function Services() {
                 </AnimatePresence>
               </div>
             </div>
-          </div>
-
-          <div className="mt-12 text-center">
-            <button className="group relative inline-flex items-center gap-2 text-primary/80">
-              <span className="relative text-xl">Dalej</span>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transform text-primary transition-transform duration-300 group-hover:translate-x-1"
-              >
-                <path
-                  d="M4 10H16M16 10L10 4M16 10L10 16"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
           </div>
         </motion.div>
       </div>

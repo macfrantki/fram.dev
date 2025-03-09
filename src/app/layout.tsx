@@ -4,7 +4,7 @@ import './globals.css';
 import '@/styles/globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-
+import BackgroundPaths from '@/components/BackgroundPaths';
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
@@ -31,6 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} font-grotesk antialiased`}>
+        <div className="absolute inset-0 z-0 overflow-visible">
+          <BackgroundPaths />
+        </div>
         <Nav />
         {children}
         <Footer />

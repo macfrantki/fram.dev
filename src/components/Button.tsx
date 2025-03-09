@@ -4,7 +4,7 @@ import { motion as _motion } from 'framer-motion';
 import Link from 'next/link';
 
 // Define the arrow icon as a separate component
-const ArrowIcon = ({ className = 'h-4 w-4 sm:h-5 sm:w-5' }) => (
+const ArrowIcon = ({ className = 'h-4 w-4 sm:h-5 sm:w-5 ' }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path
       strokeLinecap="round"
@@ -86,7 +86,9 @@ export default function Button({
         <div className="absolute inset-0 translate-y-full transform bg-primary transition-transform duration-300 ease-out group-hover:translate-y-0"></div>
       )}
       {withArrow && (
-        <ArrowIcon className={size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} />
+        <ArrowIcon
+          className={`${size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} relative z-10 stroke-primary group-hover:stroke-white`}
+        />
       )}
     </>
   );
