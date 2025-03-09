@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
   SiWordpress,
   SiWebflow,
@@ -17,8 +17,8 @@ import {
   SiKotlin,
   SiFlutter,
   SiSwift,
-} from "react-icons/si";
-import { FaReact } from "react-icons/fa";
+} from 'react-icons/si';
+import { FaReact } from 'react-icons/fa';
 
 interface TechCategory {
   title: string;
@@ -30,79 +30,34 @@ interface TechCategory {
 
 const techStack: TechCategory[] = [
   {
-    title: "Strony internetowe",
+    title: 'Strony internetowe',
     technologies: [
-      {
-        name: "WordPress",
-        icon: <SiWordpress className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Webflow",
-        icon: <SiWebflow className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Vue JS",
-        icon: <SiVuedotjs className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "React JS",
-        icon: <SiReact className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Python",
-        icon: <SiPython className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Node JS",
-        icon: <SiNodedotjs className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Laravel",
-        icon: <SiLaravel className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Hubspot",
-        icon: <SiHubspot className="w-8 h-8 md:w-10 md:h-10" />,
-      },
+      { name: 'WordPress', icon: <SiWordpress className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Webflow', icon: <SiWebflow className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Vue JS', icon: <SiVuedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'React JS', icon: <SiReact className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Python', icon: <SiPython className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Node JS', icon: <SiNodedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Laravel', icon: <SiLaravel className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Hubspot', icon: <SiHubspot className="h-8 w-8 md:h-10 md:w-10" /> },
     ],
   },
   {
-    title: "E-Commerce",
+    title: 'E-Commerce',
     technologies: [
-      {
-        name: "Shopify",
-        icon: <SiShopify className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "WooCommerce",
-        icon: <SiWoo className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Magento",
-        icon: <SiMagento className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "BigCommerce",
-        icon: <SiBigcommerce className="w-8 h-8 md:w-10 md:h-10" />,
-      },
+      { name: 'Shopify', icon: <SiShopify className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'WooCommerce', icon: <SiWoo className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Magento', icon: <SiMagento className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'BigCommerce', icon: <SiBigcommerce className="h-8 w-8 md:h-10 md:w-10" /> },
     ],
   },
   {
-    title: "Aplikacje mobilne",
+    title: 'Aplikacje mobilne',
     technologies: [
-      {
-        name: "React Native",
-        icon: <FaReact className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      { name: "Swift", icon: <SiSwift className="w-8 h-8 md:w-10 md:h-10" /> },
-      {
-        name: "Kotlin",
-        icon: <SiKotlin className="w-8 h-8 md:w-10 md:h-10" />,
-      },
-      {
-        name: "Flutter",
-        icon: <SiFlutter className="w-8 h-8 md:w-10 md:h-10" />,
-      },
+      { name: 'React Native', icon: <FaReact className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Swift', icon: <SiSwift className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Kotlin', icon: <SiKotlin className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Flutter', icon: <SiFlutter className="h-8 w-8 md:h-10 md:w-10" /> },
     ],
   },
 ];
@@ -116,23 +71,20 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12 md:mb-16 font-grotesk text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white text-center sm:text-left"
+          className="mb-8 text-center font-grotesk text-4xl font-bold text-white sm:mb-12 sm:text-left sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl"
         >
           Nasze <span className="text-primary">Technologie</span>
         </motion.h2>
 
         <div className="space-y-12 sm:space-y-16 md:space-y-24">
           {techStack.map((category, _categoryIndex) => (
-            <div
-              key={category.title}
-              className="space-y-6 sm:space-y-8 md:space-y-12"
-            >
+            <div key={category.title} className="space-y-6 sm:space-y-8 md:space-y-12">
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-grotesk text-xl sm:text-2xl text-gray-500 text-center sm:text-left"
+                className="text-center font-grotesk text-xl text-gray-500 sm:text-left sm:text-2xl"
               >
                 {category.title}
               </motion.h3>
@@ -142,7 +94,7 @@ export default function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 sm:gap-8 md:gap-12"
+                className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:gap-12 lg:grid-cols-8"
               >
                 {category.technologies.map((tech, techIndex) => (
                   <motion.div
@@ -159,7 +111,7 @@ export default function TechStack() {
                     <div className="text-gray-600 transition-colors duration-300 group-hover:text-primary">
                       {tech.icon}
                     </div>
-                    <span className="text-xs sm:text-sm text-gray-500 transition-colors duration-300 group-hover:text-gray-400 text-center">
+                    <span className="text-center text-xs text-gray-500 transition-colors duration-300 group-hover:text-gray-400 sm:text-sm">
                       {tech.name}
                     </span>
                   </motion.div>
