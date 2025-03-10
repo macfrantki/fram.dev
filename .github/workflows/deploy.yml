@@ -26,6 +26,7 @@ jobs:
         env:
           # Add any required environment variables here
           NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
+          NETLIFY_NEXT_PLUGIN_SKIP: true # Skip the Next.js plugin during GitHub Actions build
 
       # Deploy to Netlify
       - name: Deploy to Netlify
