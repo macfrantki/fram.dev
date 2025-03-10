@@ -30,6 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          data-host="https://app.microanalytics.io"
+          data-dnt="false"
+          src="https://app.microanalytics.io/js/script.js"
+          id="ZwSg9rf6GA"
+          async
+          defer
+        ></script>
+      </head>
       <body className={`${spaceGrotesk.variable} font-grotesk antialiased`}>
         <div className="absolute inset-0 z-0 overflow-visible">
           <BackgroundPaths />
