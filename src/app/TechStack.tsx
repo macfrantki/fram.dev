@@ -64,7 +64,7 @@ const techStack: TechCategory[] = [
 
 export default function TechStack() {
   return (
-    <section className="w-full bg-stone-900 py-12 md:py-16 lg:py-24">
+    <section className="w-full bg-stone-900 py-12 shadow-2xl shadow-yellow-600 md:py-16 lg:py-24">
       <div className="container mx-auto max-w-6xl px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

@@ -57,7 +57,7 @@ export default function Contact() {
                     type="text"
                     id="name"
                     placeholder="Name"
-                    className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
                 </div>
@@ -67,7 +67,7 @@ export default function Contact() {
                     type="email"
                     id="email"
                     placeholder="Email"
-                    className="w-full border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
                 </div>
@@ -78,7 +78,7 @@ export default function Contact() {
                   id="message"
                   placeholder="Message"
                   rows={4}
-                  className="w-full resize-none border-b border-gray-200 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                  className="w-full resize-none border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                   required
                 />
               </div>

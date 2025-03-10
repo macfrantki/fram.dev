@@ -165,7 +165,7 @@ export default function Services() {
   };
 
   return (
-    <section className="relative w-screen overflow-hidden bg-gradient-to-br from-primary/10 via-transparent to-primary/5 lg:min-h-[150vh]">
+    <section className="relative w-screen overflow-hidden bg-gradient-to-br from-primary/10 via-transparent to-primary/5 shadow-2xl lg:min-h-[150vh]">
       <div className="relative mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -364,11 +364,11 @@ export default function Services() {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="group relative cursor-default"
                       >
-                        <div className="relative rounded-b-lg border border-white/20 p-6 transition-all duration-500 hover:border-primary/40">
+                        <div className="relative rounded-b-lg border border-transparent p-6 transition-all duration-500 hover:border-primary/40">
                           <h4 className="mb-1 font-grotesk text-xl text-primary/80 duration-300 group-hover:text-primary">
                             {service.title}
                           </h4>
-                          <div className="mb-4 h-[1px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
+                          <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
                           <p className="text-lg leading-relaxed">{service.description}</p>
                         </div>
                       </motion.div>

@@ -30,7 +30,7 @@ function FloatingPaths({ position }: { position: number }) {
             initial={{ pathLength: 0.3, opacity: 0.5 }}
             animate={{
               pathLength: 1,
-              opacity: [0.1, 0.2, 0.1],
+              opacity: [0.2, 0.4, 0.2],
               pathOffset: [0, 1, 0],
             }}
             transition={{
