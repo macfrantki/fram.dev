@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} bg-yellow-500 font-grotesk antialiased`}>
+      <body className={`${spaceGrotesk.variable} bg-backgroundary font-grotesk antialiased`}>
         <div className="absolute inset-0 z-0 overflow-visible">
           <BackgroundPaths />
         </div>

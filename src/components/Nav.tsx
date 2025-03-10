@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 const BurgerIcon = () => (
-  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="size-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -58,7 +58,7 @@ const LogoSvg = () => (
 );
 
 const CloseIcon = () => (
-  <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="size-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
@@ -83,7 +83,7 @@ export default function Navbar() {
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className={`absolute left-0 right-0 top-0 z-50 mx-auto mt-2 max-w-6xl rounded-b transition-all duration-1000 sm:mt-4 md:mt-7`}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-0">
+      <div className="mx-4 border-b-2 border-primary/40 px-4 pb-4 sm:px-6 lg:mx-auto lg:border-none lg:px-0">
         <div className="flex h-14 items-center justify-between sm:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -116,7 +116,7 @@ export default function Navbar() {
 
           {/* Mobile menu button - only visible on small screens */}
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 lg:hidden"
+            className="flex items-center justify-center rounded-full text-primary hover:bg-gray-100 lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -133,11 +133,11 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] h-full w-full overflow-y-auto bg-gradient-to-b from-white to-gray-50 lg:hidden"
+            className="fixed inset-0 z-[100] h-full w-full overflow-y-auto bg-backgroundary lg:hidden"
           >
             <div className="flex min-h-screen flex-col">
               {/* Header with logo and close button */}
-              <div className="flex items-center justify-between border-b border-gray-100 px-6 py-5">
+              <div className="mx-6 flex items-center justify-between border-b border-primary py-3">
                 <Link
                   href="/"
                   className="flex items-center"
@@ -150,7 +150,7 @@ export default function Navbar() {
                 </Link>
 
                 <button
-                  className="rounded-full p-2 text-gray-600 hover:bg-gray-100"
+                  className="rounded-full p-2 text-primary/90 hover:bg-gray-100"
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="Close menu"
                 >

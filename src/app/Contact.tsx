@@ -61,8 +61,8 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="Name"
-                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                    placeholder="Your Name"
+                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 placeholder:text-primary focus:border-primary"
                     required
                   />
                 </div>
@@ -72,11 +72,10 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="Email"
-                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                    placeholder="Your Email"
+                    className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 placeholder:text-primary focus:border-primary"
                     required
                   />
-                  \
                 </div>
               </div>
 
@@ -84,15 +83,15 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  placeholder="Message"
+                  placeholder="Your Message"
                   rows={4}
-                  className="w-full resize-none border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
+                  className="w-full resize-none border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 placeholder:text-primary focus:border-primary"
                   required
                 />
               </div>
 
               <div className="flex justify-center sm:justify-end">
-                <button className="group relative flex items-center overflow-hidden rounded-b-lg border-2 border-primary bg-transparent px-4 py-3 text-base font-semibold text-primary transition-all hover:text-white sm:px-6 sm:text-lg md:px-8 md:py-4 md:text-xl">
+                <button className="group relative flex items-center overflow-hidden rounded-b-lg border-2 border-primary bg-transparent px-4 py-3 text-base font-semibold text-primary transition-all hover:text-backgroundary sm:px-6 sm:text-lg md:px-8 md:py-4 md:text-xl">
                   <span className="relative z-10">Send Message</span>
                   <div className="absolute inset-0 translate-y-full transform bg-primary transition-transform duration-300 ease-out group-hover:translate-y-0"></div>
                   <svg

@@ -77,7 +77,7 @@ export default function Footer() {
             >
               <Link href="/" className="flex items-center">
                 <Logo />
-                <span className="text-3xl font-semibold text-white">
+                <span className="text-3xl font-semibold text-backgroundary">
                   FRA<span className="text-primary">M.DEV</span>
                 </span>
               </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <h3 className="mb-6 font-grotesk text-sm font-semibold text-gray-400">
+                <h3 className="mb-6 font-grotesk text-sm font-semibold text-backgroundary">
                   {section.title}
                 </h3>
                 <ul className="space-y-4">
@@ -131,7 +131,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-gray-500 lg:flex-row"
+          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-backgroundary lg:flex-row"
         >
           <p>© 2024 FRAMA. All rights reserved.</p>
           <div className="flex gap-6">

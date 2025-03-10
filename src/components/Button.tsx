@@ -56,8 +56,8 @@ export default function Button({
 
   // Variant-specific classes
   const variantClasses = {
-    primary: 'border-2 border-primary bg-transparent text-primary hover:text-white',
-    secondary: 'border-2 border-gray-700 bg-transparent text-gray-800 hover:text-white',
+    primary: 'border-2 border-primary bg-transparent text-primary hover:text-backgroundary',
+    secondary: 'border-2 border-gray-700 bg-transparent text-gray-800 hover:text-backgroundary',
     outline: 'border border-gray-300 bg-transparent text-gray-800 hover:bg-gray-100',
     contact: 'border-2 border-primary bg-primary text-white hover:bg-primary/90',
   };
@@ -87,7 +87,7 @@ export default function Button({
       )}
       {withArrow && (
         <ArrowIcon
-          className={`${size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} relative z-10 stroke-primary group-hover:stroke-white`}
+          className={`${size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} relative z-10 stroke-primary group-hover:stroke-backgroundary`}
         />
       )}
     </>

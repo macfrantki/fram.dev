@@ -71,7 +71,7 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-8 text-center font-grotesk text-4xl font-bold text-white sm:mb-12 sm:text-left sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl"
+          className="mb-8 text-center font-grotesk text-4xl font-bold text-backgroundary sm:mb-12 sm:text-left sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl"
         >
           Nasze <span className="text-primary">Technologie</span>
         </motion.h2>

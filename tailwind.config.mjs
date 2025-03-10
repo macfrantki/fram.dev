@@ -10,8 +10,7 @@ const config = {
     extend: {
       colors: {
         primary: '#e11d48',
-        secondary: '#111111',
-        tertiary: '#222222',
+        backgroundary: '#eab308',
       },
       fontFamily: {
         grotesk: ['var(--font-space-grotesk)'],
