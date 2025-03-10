@@ -48,14 +48,19 @@ export default function Contact() {
             <form
               data-netlify="true"
               name="contact"
+              method="POST"
               className="space-y-6 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 p-4 sm:space-y-8 sm:p-6 md:p-8"
             >
+              {/* Hidden input for Netlify Forms */}
+              <input type="hidden" name="form-name" value="contact" />
+
               {/* Name and Email fields - stack on mobile, side by side on tablet+ */}
               <div className="flex w-full flex-col gap-6 sm:flex-row">
                 <div className="mb-6 w-full sm:mb-0 sm:w-1/2">
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="Name"
                     className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
@@ -66,16 +71,19 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="Email"
                     className="w-full border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"
                     required
                   />
+                  \
                 </div>
               </div>
 
               <div>
                 <textarea
                   id="message"
+                  name="message"
                   placeholder="Message"
                   rows={4}
                   className="w-full resize-none border-b border-primary/40 bg-transparent px-4 py-3 outline-none transition-colors duration-300 focus:border-primary"

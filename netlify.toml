@@ -1,0 +1,13 @@
+[build]
+  command = "next build"
+  publish = "out"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_USE_NETLIFY_EDGE = "true"
+
+# This is the HTML Forms transformation configuration for Next.js static exports
+[functions.next_netlify_forms]
+  included_files = ["**/*.html"] 
