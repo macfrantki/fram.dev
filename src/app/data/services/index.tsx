@@ -4,7 +4,7 @@
 export const SERVICE_CATEGORIES = [
   {
     id: 'web-design',
-    name: 'Web Design',
+    name: 'Web Dev',
     order: 1,
   },
   {
