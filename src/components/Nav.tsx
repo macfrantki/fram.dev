@@ -62,8 +62,25 @@ const CloseIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll event to show navbar on mobile after scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -77,53 +94,81 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <motion.nav
-      initial={{ x: '150%' }}
-      animate={{ x: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-      className={`absolute left-0 right-0 top-0 z-50 mx-auto mt-2 max-w-6xl rounded-b transition-all duration-1000 sm:mt-4 md:mt-7`}
-    >
-      <div className="mx-4 border-b-2 border-primary/40 px-4 pb-4 sm:px-6 lg:mx-auto lg:border-none lg:px-0">
-        <div className="flex h-14 items-center justify-between sm:h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <LogoSvg />
-            <span
-              className={`ml-2 text-2xl font-semibold text-gray-900 transition-all duration-300 sm:ml-4 sm:text-3xl md:ml-6 md:text-4xl lg:text-5xl`}
-            >
-              FRA<span className="text-primary">M.DEV</span>
-            </span>
-          </Link>
+    <>
+      {/* Desktop navbar - always visible */}
+      <motion.nav
+        initial={{ x: '150%' }}
+        animate={{ x: 0 }}
+        transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+        className={`absolute left-0 right-0 top-0 z-50 mx-auto mt-2 hidden max-w-6xl rounded-b transition-all duration-1000 sm:mt-4 md:mt-7 lg:block`}
+      >
+        <div className="mx-4 border-b-2 border-primary/40 px-4 pb-4 sm:px-6 lg:mx-auto lg:border-none lg:px-0">
+          <div className="flex h-14 items-center justify-between sm:h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <LogoSvg />
+              <span
+                className={`ml-2 text-2xl font-semibold text-gray-900 transition-all duration-300 sm:ml-4 sm:text-3xl md:ml-6 md:text-4xl lg:text-5xl`}
+              >
+                FRA<span className="text-primary">M.DEV</span>
+              </span>
+            </Link>
 
-          {/* Desktop Navigation - hidden on small screens */}
-          <div className="hidden lg:flex lg:items-center lg:gap-8">
-            {navLinks.map((link) =>
-              link.name === 'Kontakt' ? (
-                <Button key={link.name} href={link.href} variant="primary" size="sm" roundedBottom>
-                  {link.name}
-                </Button>
-              ) : (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="relative text-sm font-medium uppercase text-gray-700 before:absolute before:-bottom-1 before:left-0 before:h-[2px] before:w-0 before:bg-primary before:transition-all before:duration-300 hover:before:w-full"
-                >
-                  {link.name}
-                </Link>
-              )
-            )}
+            {/* Desktop Navigation */}
+            <div className="flex items-center gap-8">
+              {navLinks.map((link) =>
+                link.name === 'Kontakt' ? (
+                  <Button
+                    key={link.name}
+                    href={link.href}
+                    variant="primary"
+                    size="sm"
+                    roundedBottom
+                  >
+                    {link.name}
+                  </Button>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="relative text-sm font-medium uppercase text-gray-700 before:absolute before:-bottom-1 before:left-0 before:h-[2px] before:w-0 before:bg-primary before:transition-all before:duration-300 hover:before:w-full"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
+            </div>
           </div>
-
-          {/* Mobile menu button - only visible on small screens */}
-          <button
-            className="flex items-center justify-center rounded-full text-primary hover:bg-gray-100 lg:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {mobileMenuOpen ? <CloseIcon /> : <BurgerIcon />}
-          </button>
         </div>
-      </div>
+      </motion.nav>
+
+      {/* Mobile navbar - only visible after scrolling or when menu is open */}
+      <motion.nav
+        initial={{ y: '-100%' }}
+        animate={{ y: scrolled || mobileMenuOpen ? 0 : '-100%' }}
+        className={`fixed left-0 right-0 top-0 z-50 mx-auto max-w-6xl rounded-b bg-backgroundary/95 shadow-md backdrop-blur-sm transition-all duration-300 lg:hidden`}
+      >
+        <div className="mx-4 border-b border-primary/40 px-4 py-4 sm:px-6">
+          <div className="flex h-14 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <LogoSvg />
+              <span className="ml-2 text-2xl font-semibold text-gray-900">
+                FRA<span className="text-primary">M.DEV</span>
+              </span>
+            </Link>
+
+            {/* Mobile menu button */}
+            <button
+              className="flex items-center justify-center rounded-full text-primary hover:bg-gray-100"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {mobileMenuOpen ? <CloseIcon /> : <BurgerIcon />}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -202,6 +247,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }
