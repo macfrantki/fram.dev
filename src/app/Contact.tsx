@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-interface FormData {
+interface _FormData {
   name: string;
   email: string;
   message: string;

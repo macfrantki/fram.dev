@@ -65,7 +65,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-              className="pointer-events-none text-center text-5xl font-bold leading-tight sm:text-left md:text-6xl lg:text-8xl xl:text-[10rem]"
+              className="pointer-events-none text-center text-4xl font-bold leading-none tracking-tight sm:text-left md:text-5xl lg:text-7xl xl:text-8xl"
             >
               <motion.span
                 initial={{ opacity: 0, x: -40 }}
@@ -73,7 +73,7 @@ export default function Hero() {
                 transition={{ type: 'spring', duration: 1, delay: 0.4 }}
                 className="block"
               >
-                MODERN WEBSITES.
+                CODE THAT WORKS
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: 40 }}
@@ -81,22 +81,31 @@ export default function Hero() {
                 transition={{ type: 'spring', duration: 1, delay: 0.6 }}
                 className="block text-primary"
               >
-                POWERFUL RESULTS.
+                DESIGN THAT SELLS
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ type: 'spring', duration: 1, delay: 0.8 }}
-                className="block text-lg md:text-2xl lg:text-3xl font-normal mt-4"
+                className="block"
               >
-                We transform digital presence into customer conversions for growing businesses.
+                RESULTS THAT LAST
               </motion.span>
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', duration: 0.8, delay: 1 }}
+              className="mt-6 text-center text-base text-gray-900 sm:text-left md:max-w-2xl md:text-lg lg:text-xl"
+            >
+              Custom-built websites and software solutions that convert visitors into customers. No
+              templates. Just powerful digital experiences that drive business growth.
+            </motion.p>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', duration: 0.8, delay: 1 }}
-              className="mt-8 flex justify-center md:mt-12 md:justify-start"
+              className="mt-8 flex justify-center gap-4 md:mt-12 md:justify-start"
             >
               <Button
                 variant="primary"
@@ -105,17 +114,25 @@ export default function Hero() {
                 withArrow
                 roundedBottom
               >
-                GET STARTED
+                GET FREE CONSULTATION
               </Button>
-              <Button
-                variant="primary"
-                className="mt-6 block lg:hidden"
-                size="md"
-                withArrow
-                roundedBottom
-              >
-                GET STARTED
+              <Button variant="secondary" className="hidden lg:flex" size="lg" roundedBottom>
+                VIEW OUR WORK
               </Button>
+              <div className="flex flex-col gap-4 lg:hidden">
+                <Button
+                  variant="primary"
+                  className="mt-6 block lg:hidden"
+                  size="md"
+                  withArrow
+                  roundedBottom
+                >
+                  GET FREE CONSULTATION
+                </Button>
+                <Button variant="secondary" className="block lg:hidden" size="md" roundedBottom>
+                  VIEW OUR WORK
+                </Button>
+              </div>
             </motion.div>
             {/* Stats section for desktop */}
           </motion.div>

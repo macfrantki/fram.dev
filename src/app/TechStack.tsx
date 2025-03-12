@@ -79,7 +79,7 @@ const techStack: TechCategory[] = [
   },
 ];
 
-interface Language {
+interface _Language {
   code: string;
   flag: string;
   name: string;
