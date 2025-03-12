@@ -26,7 +26,7 @@ const statsData = [
 
 const Stats = ({ className = '' }) => (
   <div className={`flex justify-center ${className}`}>
-    <div className="flex flex-col space-y-8 sm:space-x-12 md:space-x-16 lg:flex-row lg:space-x-8 lg:space-y-0">
+    <div className="flex flex-col space-y-8 sm:space-x-12 md:space-x-16 lg:flex-row lg:space-x-24 lg:space-y-0">
       {statsData.map((stat, index) => (
         <div key={index} className="text-center">
           <p className="text-3xl font-bold text-primary md:text-4xl">{stat.value}</p>
@@ -186,7 +186,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', duration: 1, delay: 0.4 }}
-              className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-lg lg:font-bold"
+              className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-xl lg:font-bold"
             >
               O nas
             </motion.span>
@@ -290,10 +290,10 @@ export default function Services() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group relative overflow-hidden rounded-lg border border-white/20 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
+                        className="group relative overflow-hidden rounded-lg border border-primary/20 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
                       >
                         <div className="relative z-10">
-                          <h4 className="mb-3 font-grotesk text-xl text-primary/80 duration-300 group-hover:text-primary">
+                          <h4 className="mb-3 font-grotesk text-xl text-primary duration-300">
                             {service.title}
                           </h4>
                           <div className="mb-4 h-[1px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
@@ -301,7 +301,7 @@ export default function Services() {
                             {service.description}
                           </p>
                         </div>
-                        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/15 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                       </motion.div>
                     ))}
                   </AnimatePresence>
@@ -310,8 +310,8 @@ export default function Services() {
             </div>
 
             {/* Desktop Services View */}
-            <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 p-10 py-20 shadow-xl md:block">
-              <div className="mb-10 flex justify-center gap-12">
+            <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/5 p-10 py-20 shadow-xl duration-300 hover:shadow-2xl md:block">
+              <div className="mb-10 flex justify-center gap-16">
                 {Object.keys(services).map((type) => (
                   <button
                     key={type}
@@ -339,7 +339,7 @@ export default function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto mb-6 mt-16 max-w-3xl text-center text-lg leading-relaxed md:text-xl"
+                  className="mx-auto my-8 max-w-3xl text-center text-lg leading-relaxed md:text-xl"
                 >
                   {services[selectedType].description}
                 </motion.p>
@@ -364,8 +364,8 @@ export default function Services() {
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         className="group relative cursor-default"
                       >
-                        <div className="relative rounded-b-lg border border-transparent p-6 transition-all duration-500 hover:border-primary/40">
-                          <h4 className="mb-1 font-grotesk text-xl text-primary/80 duration-300 group-hover:text-primary">
+                        <div className="relative h-[10rem] rounded-b-lg border border-transparent bg-gradient-to-tl from-primary/20 via-primary/10 to-primary/5 p-6 transition-all duration-500 hover:border-primary/40">
+                          <h4 className="mb-1 font-grotesk text-xl text-primary">
                             {service.title}
                           </h4>
                           <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>

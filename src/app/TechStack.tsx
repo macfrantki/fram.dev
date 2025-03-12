@@ -2,23 +2,29 @@
 
 import { motion } from 'framer-motion';
 import {
-  SiWordpress,
-  SiWebflow,
-  SiVuedotjs,
   SiReact,
-  SiPython,
+  SiNextdotjs,
   SiNodedotjs,
-  SiLaravel,
-  SiHubspot,
+  SiSvelte,
+  SiTailwindcss,
+  SiAlpinedotjs,
+  SiFramer,
+  SiPython,
+  SiDjango,
+  SiFastapi,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiDocker,
+  SiKubernetes,
+  SiGithubactions,
+  SiGitlab,
+  SiBitbucket,
   SiShopify,
   SiWoo,
   SiMagento,
   SiBigcommerce,
-  SiKotlin,
-  SiFlutter,
-  SiSwift,
 } from 'react-icons/si';
-import { FaReact } from 'react-icons/fa';
 
 interface TechCategory {
   title: string;
@@ -30,16 +36,36 @@ interface TechCategory {
 
 const techStack: TechCategory[] = [
   {
-    title: 'Strony internetowe',
+    title: 'Front-end',
     technologies: [
-      { name: 'WordPress', icon: <SiWordpress className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Webflow', icon: <SiWebflow className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Vue JS', icon: <SiVuedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'React JS', icon: <SiReact className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'React', icon: <SiReact className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Next.js', icon: <SiNextdotjs className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Node.js', icon: <SiNodedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Svelte', icon: <SiSvelte className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'TailwindCSS', icon: <SiTailwindcss className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Alpine.js', icon: <SiAlpinedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Framer Motion', icon: <SiFramer className="h-8 w-8 md:h-10 md:w-10" /> },
+    ],
+  },
+  {
+    title: 'Back-end',
+    technologies: [
       { name: 'Python', icon: <SiPython className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Node JS', icon: <SiNodedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Laravel', icon: <SiLaravel className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Hubspot', icon: <SiHubspot className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Django', icon: <SiDjango className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'FastAPI', icon: <SiFastapi className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'MongoDB', icon: <SiMongodb className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Redis', icon: <SiRedis className="h-8 w-8 md:h-10 md:w-10" /> },
+    ],
+  },
+  {
+    title: 'Cloud & DevOps',
+    technologies: [
+      { name: 'Docker', icon: <SiDocker className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Kubernetes', icon: <SiKubernetes className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'GitHub Actions', icon: <SiGithubactions className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'GitLab', icon: <SiGitlab className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Bitbucket', icon: <SiBitbucket className="h-8 w-8 md:h-10 md:w-10" /> },
     ],
   },
   {
@@ -51,16 +77,13 @@ const techStack: TechCategory[] = [
       { name: 'BigCommerce', icon: <SiBigcommerce className="h-8 w-8 md:h-10 md:w-10" /> },
     ],
   },
-  {
-    title: 'Aplikacje mobilne',
-    technologies: [
-      { name: 'React Native', icon: <FaReact className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Swift', icon: <SiSwift className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Kotlin', icon: <SiKotlin className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Flutter', icon: <SiFlutter className="h-8 w-8 md:h-10 md:w-10" /> },
-    ],
-  },
 ];
+
+interface Language {
+  code: string;
+  flag: string;
+  name: string;
+}
 
 export default function TechStack() {
   return (
