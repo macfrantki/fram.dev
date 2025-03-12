@@ -73,7 +73,7 @@ export default function Hero() {
                 transition={{ type: 'spring', duration: 1, delay: 0.4 }}
                 className="block"
               >
-                Przekształć
+                MODERN WEBSITES.
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: 40 }}
@@ -81,15 +81,15 @@ export default function Hero() {
                 transition={{ type: 'spring', duration: 1, delay: 0.6 }}
                 className="block text-primary"
               >
-                Przyszłość
+                POWERFUL RESULTS.
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ type: 'spring', duration: 1, delay: 0.8 }}
-                className="block"
+                className="block text-lg md:text-2xl lg:text-3xl font-normal mt-4"
               >
-                Cyfrową
+                We transform digital presence into customer conversions for growing businesses.
               </motion.span>
             </motion.h1>
             <motion.div
@@ -105,7 +105,7 @@ export default function Hero() {
                 withArrow
                 roundedBottom
               >
-                Rozpocznij Transformację
+                GET STARTED
               </Button>
               <Button
                 variant="primary"
@@ -114,7 +114,7 @@ export default function Hero() {
                 withArrow
                 roundedBottom
               >
-                Rozpocznij Transformację
+                GET STARTED
               </Button>
             </motion.div>
             {/* Stats section for desktop */}
