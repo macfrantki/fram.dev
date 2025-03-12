@@ -65,7 +65,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-              className="pointer-events-none text-center text-5xl font-bold leading-tight md:text-6xl lg:text-8xl xl:text-[10rem]"
+              className="pointer-events-none text-center text-5xl font-bold leading-tight sm:text-left md:text-6xl lg:text-8xl xl:text-[10rem]"
             >
               <motion.span
                 initial={{ opacity: 0, x: -40 }}
@@ -96,7 +96,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', duration: 0.8, delay: 1 }}
-              className="mt-8 flex justify-center md:mt-12"
+              className="mt-8 flex justify-center md:mt-12 md:justify-start"
             >
               <Button
                 variant="primary"
