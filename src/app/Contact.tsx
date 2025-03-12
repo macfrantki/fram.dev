@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 
-interface FormData {
+interface _FormData {
   name: string;
   email: string;
   message: string;
 }
 
 const languages = [
-  { code: 'pl', flag: '🇵🇱', name: 'Polsku' },
+  { code: 'pl', flag: '🇵🇱', name: 'Polish' },
   { code: 'en', flag: '🇺🇸', name: 'English' },
   { code: 'pt', flag: '🇧🇷', name: 'Português' },
   { code: 'es', flag: '🇪🇸', name: 'Español' },
@@ -60,7 +60,7 @@ export default function Contact() {
                 className="absolute left-0 right-0 top-0 z-40 border-b-2 border-primary/20 bg-gradient-to-r from-transparent via-primary/5 to-transparent py-2"
               >
                 <div className="flex cursor-default items-center justify-center gap-4">
-                  <span className="text-sm font-thin text-primary">Mówimy po:</span>
+                  <span className="text-sm font-thin text-primary">We speak:</span>
                   <div className="flex gap-6">
                     {languages.map((lang, index) => (
                       <motion.div

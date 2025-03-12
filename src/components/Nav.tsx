@@ -8,8 +8,8 @@ import Button from './Button';
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Usługi', href: '/services' },
-  { name: 'Kontakt', href: '/contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const BurgerIcon = () => (
@@ -117,7 +117,7 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <div className="flex items-center gap-8">
               {navLinks.map((link) =>
-                link.name === 'Kontakt' ? (
+                link.name === 'Contact' ? (
                   <Button
                     key={link.name}
                     href={link.href}
@@ -221,7 +221,7 @@ export default function Navbar() {
                       transition={{ delay: 0.2 + index * 0.1 }}
                       className="group"
                     >
-                      {link.name === 'Kontakt' ? (
+                      {link.name === 'Contact' ? (
                         <Button
                           href={link.href}
                           variant="primary"

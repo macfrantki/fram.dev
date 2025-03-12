@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
+import createMDX from '@next/mdx';
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
@@ -22,6 +32,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: true, // Required for static export
   },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   webpack: (config) => {
     const rules = config.module.rules;
 
@@ -37,4 +48,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);
