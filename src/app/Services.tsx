@@ -19,9 +19,9 @@ interface Services {
 }
 
 const statsData = [
-  { value: '10+', label: 'Lat doświadczenia' },
-  { value: '50+', label: 'Ukończonych projektów' },
-  { value: '100%', label: 'Zadowolonych klientów' },
+  { value: '5+', label: 'Years combined experience' },
+  { value: '25+', label: 'Completed projects and counting' },
+  { value: '98%', label: 'Client satisfaction rate' },
 ];
 
 const Stats = ({ className = '' }) => (
@@ -188,7 +188,7 @@ export default function Services() {
               transition={{ type: 'spring', duration: 1, delay: 0.4 }}
               className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-xl lg:font-bold"
             >
-              O nas
+              ABOUT US
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
@@ -197,7 +197,7 @@ export default function Services() {
               transition={{ type: 'spring', duration: 1, delay: 0.6 }}
               className="mb-10 font-grotesk text-3xl font-bold md:text-4xl"
             >
-              Zaufaj wspaniałym <span className="text-primary">Ludziom</span>
+              Small Team. <span className="text-primary">Big Impact.</span>
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -214,9 +214,7 @@ export default function Services() {
               transition={{ type: 'spring', duration: 1, delay: 0.8 }}
               className="mx-auto text-lg leading-relaxed text-gray-700 md:w-2/3"
             >
-              Jesteśmy dwójką pasjonatów z 10-letnim doświadczeniem w tworzeniu aplikacji webowych.
-              Znajdujemy przyjemność w projektowaniu i programowaniu rozwiązań, które przynoszą
-              realną wartość naszym Klientom.
+              We're a boutique development studio that combines the agility of a startup with the expertise of seasoned professionals. Our approach blends technical innovation with practical business solutions, creating digital products that help our clients stand out in increasingly competitive markets.
             </motion.p>
           </motion.div>
           {/* <div className="mx-auto mt-10 lg:mt-20 h-[1px] w-full lg:w-1/3 bg-primary/40"></div> */}
