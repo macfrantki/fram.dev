@@ -2,22 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { useServiceData } from './data/services';
 
-interface ServiceItem {
-  title: string;
-  description: string;
-}
-
-interface ServiceType {
-  name: string;
-  description: string;
-  items: ServiceItem[];
-}
-
-interface Services {
-  [key: string]: ServiceType;
-}
-
+// Stats data
 const statsData = [
   { value: '5+', label: 'Years combined experience' },
   { value: '25+', label: 'Completed projects and counting' },
@@ -37,131 +24,23 @@ const Stats = ({ className = '' }) => (
   </div>
 );
 
-const services: Services = {
-  development: {
-    name: 'Development',
-    description:
-      'Tworzymy zaawansowane rozwiązania webowe wykorzystując najnowsze technologie i najlepsze praktyki programistyczne.',
-    items: [
-      {
-        title: 'Frontend Development',
-        description:
-          'Nowoczesne i responsywne interfejsy użytkownika z wykorzystaniem React i Next.js',
-      },
-      {
-        title: 'Backend Development',
-        description: 'Skalowalne API i architektury serwerowe dostosowane do Twoich potrzeb',
-      },
-      {
-        title: 'Performance Optimization',
-        description: 'Optymalizacja wydajności i czasu ładowania aplikacji webowych',
-      },
-      {
-        title: 'Web Apps',
-        description:
-          'Kompleksowe aplikacje webowe dostosowane do indywidualnych potrzeb biznesowych',
-      },
-    ],
-  },
-  design: {
-    name: 'Design',
-    description:
-      'Projektujemy intuicyjne interfejsy, które nie tylko świetnie wyglądają, ale również doskonale działają.',
-    items: [
-      {
-        title: 'UI/UX Design',
-        description: 'Estetyczne i funkcjonalne projekty interfejsów użytkownika',
-      },
-
-      {
-        title: 'Design System',
-        description: 'Tworzenie spójnych systemów projektowych i bibliotek komponentów',
-      },
-      {
-        title: 'Prototypowanie',
-        description: 'Interaktywne prototypy i testy użyteczności',
-      },
-    ],
-  },
-  ecommerce: {
-    name: 'E-commerce',
-    description:
-      'Kompleksowe rozwiązania e-commerce, od małych sklepów po duże platformy sprzedażowe.',
-    items: [
-      {
-        title: 'Sklepy Online',
-        description: 'Wydajne i bezpieczne platformy sprzedażowe',
-      },
-      {
-        title: 'Integracje',
-        description: 'Połączenie z systemami płatności, ERP i innymi serwisami',
-      },
-    ],
-  },
-  mobile: {
-    name: 'Mobile',
-    description:
-      'Tworzymy natywne i hybrydowe aplikacje mobilne, które zapewniają najwyższą jakość użytkowania.',
-    items: [
-      {
-        title: 'Aplikacje Hybrydowe',
-        description: 'Wieloplatformowe aplikacje z wykorzystaniem React Native i Flutter',
-      },
-      {
-        title: 'PWA',
-        description: 'Progresywne aplikacje webowe działające jak natywne aplikacje mobilne',
-      },
-      {
-        title: 'Natywne Aplikacje',
-        description: 'Dedykowane aplikacje dla iOS i Android',
-      },
-      {
-        title: 'Mobile UX',
-        description: 'Optymalizacja doświadczeń mobilnych i testowanie użyteczności',
-      },
-    ],
-  },
-  consulting: {
-    name: 'Consulting',
-    description:
-      'Oferujemy profesjonalne doradztwo technologiczne i wsparcie w transformacji cyfrowej.',
-    items: [
-      {
-        title: 'Audyty Techniczne',
-        description: 'Kompleksowa analiza i optymalizacja istniejących rozwiązań',
-      },
-      {
-        title: 'Strategia Cyfrowa',
-        description: 'Planowanie i wdrażanie strategii transformacji cyfrowej',
-      },
-      {
-        title: 'Szkolenia',
-        description: 'Warsztaty i szkolenia z zakresu nowych technologii',
-      },
-      {
-        title: 'Wsparcie Techniczne',
-        description: 'Długoterminowe wsparcie i rozwój projektów technologicznych',
-      },
-    ],
-  },
-};
-
 export default function Services() {
-  const [selectedTypeIndex, setSelectedTypeIndex] = useState(0);
+  const [selectedCategoryId, setSelectedCategoryId] = useState('web-design');
+  const { categories, getServicesByCategory } = useServiceData();
+  
+  const selectedServices = getServicesByCategory(selectedCategoryId);
+  const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
 
-  const serviceTypes = Object.keys(services);
-  const selectedType = serviceTypes[selectedTypeIndex];
-
-  const handlePrevService = () => {
-    setSelectedTypeIndex((prevIndex) =>
-      prevIndex === 0 ? serviceTypes.length - 1 : prevIndex - 1
-    );
+  const handlePrevCategory = () => {
+    const currentIndex = categories.findIndex(cat => cat.id === selectedCategoryId);
+    const prevIndex = currentIndex === 0 ? categories.length - 1 : currentIndex - 1;
+    setSelectedCategoryId(categories[prevIndex].id);
   };
 
-  const handleNextService = () => {
-    setSelectedTypeIndex((prevIndex) =>
-      prevIndex === serviceTypes.length - 1 ? 0 : prevIndex + 1
-    );
+  const handleNextCategory = () => {
+    const currentIndex = categories.findIndex(cat => cat.id === selectedCategoryId);
+    const nextIndex = currentIndex === categories.length - 1 ? 0 : currentIndex + 1;
+    setSelectedCategoryId(categories[nextIndex].id);
   };
 
   return (
@@ -214,10 +93,9 @@ export default function Services() {
               transition={{ type: 'spring', duration: 1, delay: 0.8 }}
               className="mx-auto text-lg leading-relaxed text-gray-700 md:w-2/3"
             >
-              We're a boutique development studio that combines the agility of a startup with the expertise of seasoned professionals. Our approach blends technical innovation with practical business solutions, creating digital products that help our clients stand out in increasingly competitive markets.
+              We&apos;re a boutique development studio that combines the agility of a startup with the expertise of seasoned professionals. Our approach blends technical innovation with practical business solutions, creating digital products that help our clients stand out in increasingly competitive markets.
             </motion.p>
           </motion.div>
-          {/* <div className="mx-auto mt-10 lg:mt-20 h-[1px] w-full lg:w-1/3 bg-primary/40"></div> */}
 
           {/* Services Section */}
           <div className="mt-10 flex flex-col gap-16 lg:mt-20">
@@ -228,7 +106,7 @@ export default function Services() {
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={handlePrevService}
+                    onClick={handlePrevCategory}
                     className="rounded-full bg-primary/10 p-3 text-primary transition-colors hover:bg-primary/20"
                   >
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,18 +119,18 @@ export default function Services() {
                     </svg>
                   </motion.button>
                   <motion.h3
-                    key={selectedType}
+                    key={selectedCategoryId}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     className="text-2xl font-bold text-primary"
                   >
-                    {services[selectedType].name}
+                    {selectedCategory?.name}
                   </motion.h3>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={handleNextService}
+                    onClick={handleNextCategory}
                     className="rounded-full bg-primary/10 p-3 text-primary transition-colors hover:bg-primary/20"
                   >
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -266,24 +144,11 @@ export default function Services() {
                   </motion.button>
                 </div>
 
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={selectedType}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-6 text-center text-lg leading-relaxed text-gray-700"
-                  >
-                    {services[selectedType].description}
-                  </motion.p>
-                </AnimatePresence>
-
                 <div className="mt-12 space-y-6">
                   <AnimatePresence mode="wait">
-                    {services[selectedType].items.map((service, index) => (
+                    {selectedServices.map((service, index) => (
                       <motion.div
-                        key={service.title}
+                        key={service.id}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
@@ -292,7 +157,7 @@ export default function Services() {
                       >
                         <div className="relative z-10">
                           <h4 className="mb-3 font-grotesk text-xl text-primary duration-300">
-                            {service.title}
+                            {service.name}
                           </h4>
                           <div className="mb-4 h-[1px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
                           <p className="text-base leading-relaxed text-gray-700">
@@ -310,18 +175,18 @@ export default function Services() {
             {/* Desktop Services View */}
             <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/5 p-10 py-20 shadow-xl duration-300 hover:shadow-2xl md:block">
               <div className="mb-10 flex justify-center gap-16">
-                {Object.keys(services).map((type) => (
+                {categories.map((category) => (
                   <button
-                    key={type}
-                    onClick={() => setSelectedTypeIndex(serviceTypes.indexOf(type))}
+                    key={category.id}
+                    onClick={() => setSelectedCategoryId(category.id)}
                     className={`group relative text-center font-grotesk text-xl transition-all duration-500 md:text-2xl ${
-                      selectedType === type ? 'text-primary' : 'hover:text-primary/80'
+                      selectedCategoryId === category.id ? 'text-primary' : 'hover:text-primary/80'
                     }`}
                   >
-                    {services[type].name}
+                    {category.name}
                     <span
                       className={`absolute -bottom-2 left-0 right-0 h-[1px] w-full origin-left transform bg-primary/40 transition-transform duration-300 ease-out ${
-                        selectedType === type
+                        selectedCategoryId === category.id
                           ? 'scale-x-100'
                           : 'scale-x-0 group-hover:scale-x-[0.3]'
                       }`}
@@ -330,32 +195,19 @@ export default function Services() {
                 ))}
               </div>
 
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={selectedType}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="mx-auto my-8 max-w-3xl text-center text-lg leading-relaxed md:text-xl"
-                >
-                  {services[selectedType].description}
-                </motion.p>
-              </AnimatePresence>
-
               <div className="w-full">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={selectedType}
+                    key={selectedCategoryId}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5, staggerChildren: 0.1 }}
                     className="mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2"
                   >
-                    {services[selectedType].items.map((service, index) => (
+                    {selectedServices.map((service, index) => (
                       <motion.div
-                        key={service.title}
+                        key={service.id}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
@@ -364,7 +216,7 @@ export default function Services() {
                       >
                         <div className="relative h-[10rem] rounded-b-lg border border-transparent bg-gradient-to-tl from-primary/20 via-primary/10 to-primary/5 p-6 transition-all duration-500 hover:border-primary/40">
                           <h4 className="mb-1 font-grotesk text-xl text-primary">
-                            {service.title}
+                            {service.name}
                           </h4>
                           <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
                           <p className="text-lg leading-relaxed">{service.description}</p>
