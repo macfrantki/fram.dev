@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve out",
     "serve": "npx serve out",
+    "deploy": "npm run build && npm run serve",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write .",
