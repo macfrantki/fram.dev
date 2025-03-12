@@ -96,7 +96,7 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="mb-8 text-center font-grotesk text-4xl font-bold text-backgroundary sm:mb-12 sm:text-left sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl"
         >
-          Nasze <span className="text-primary">Technologie</span>
+          Our <span className="text-primary">Technologies</span>
         </motion.h2>
 
         <div className="mx-auto space-y-12 sm:space-y-16 md:space-y-24">
