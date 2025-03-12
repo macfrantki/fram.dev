@@ -4,12 +4,12 @@
 export const SERVICE_CATEGORIES = [
   {
     id: 'web-design',
-    name: 'Web Solutions',
+    name: 'Web Design',
     order: 1,
   },
   {
     id: 'backend',
-    name: 'Backend Services',
+    name: 'Backend',
     order: 2,
   },
   {
