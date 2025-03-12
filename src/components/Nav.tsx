@@ -146,10 +146,10 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: '-100%' }}
         animate={{ y: scrolled || mobileMenuOpen ? 0 : '-100%' }}
-        className={`fixed left-0 right-0 top-0 z-50 mx-auto max-w-6xl rounded-b bg-backgroundary/95 shadow-md backdrop-blur-sm transition-all duration-300 lg:hidden`}
+        className={`fixed left-0 right-0 top-0 z-50 mx-4 max-w-6xl rounded-b border-b border-primary/40 bg-backgroundary/95 shadow-md backdrop-blur-sm transition-all duration-300 lg:hidden`}
       >
-        <div className="mx-4 border-b border-primary/40 px-4 py-4 sm:px-6">
-          <div className="flex h-14 items-center justify-between">
+        <div className="mx-4 px-4 py-4 sm:px-6">
+          <div className="flex h-6 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <LogoSvg />
@@ -160,7 +160,7 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <button
-              className="flex items-center justify-center rounded-full text-primary hover:bg-gray-100"
+              className="flex items-center justify-center rounded-full text-primary"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
@@ -182,29 +182,31 @@ export default function Navbar() {
           >
             <div className="flex min-h-screen flex-col">
               {/* Header with logo and close button */}
-              <div className="mx-6 flex items-center justify-between border-b border-primary py-3">
-                <Link
-                  href="/"
-                  className="flex items-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <LogoSvg />
-                  <span className="ml-3 text-2xl font-semibold text-gray-900">
-                    FRA<span className="text-primary">M.DEV</span>
-                  </span>
-                </Link>
+              <div className="mx-4 rounded-b border-b border-primary/40 px-4 py-4 shadow-md sm:px-6">
+                <div className="flex h-6 items-center justify-between">
+                  <Link
+                    href="/"
+                    className="flex items-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <LogoSvg />
+                    <span className="ml-2 text-2xl font-semibold text-gray-900">
+                      FRA<span className="text-primary">M.DEV</span>
+                    </span>
+                  </Link>
 
-                <button
-                  className="rounded-full p-2 text-primary/90 hover:bg-gray-100"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <CloseIcon />
-                </button>
+                  <button
+                    className="flex items-center justify-center rounded-full text-primary"
+                    onClick={() => setMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                  >
+                    <CloseIcon />
+                  </button>
+                </div>
               </div>
 
               {/* Navigation Links */}
-              <div className="mb-20 flex flex-grow flex-col items-center justify-center">
+              <div className="mt-20 flex flex-grow flex-col items-center justify-start">
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
