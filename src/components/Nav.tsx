@@ -155,7 +155,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: '-100%' }}
         animate={{ y: scrolled || mobileMenuOpen ? 0 : '-100%' }}
-        className={`fixed left-0 right-0 top-0 z-50 mx-4 max-w-6xl rounded-b border-b border-primary/40 bg-backgroundary/95 backdrop-blur-sm transition-all duration-300 ${scrolled ? 'shadow-md' : ''} lg:hidden`}
+        className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/40 bg-backgroundary/95 backdrop-blur-sm transition-all duration-300 ${scrolled ? 'shadow-md' : ''} lg:hidden`}
       >
         <div className="mx-4 px-4 py-4 sm:px-6">
           <div className="flex h-6 items-center justify-between">
