@@ -57,7 +57,7 @@ export default function Button({
   // Variant-specific classes
   const variantClasses = {
     primary: 'border-2 border-primary bg-transparent text-primary hover:text-backgroundary',
-    secondary: 'border-2 border-gray-700 bg-transparent text-gray-800 hover:text-backgroundary',
+    secondary: 'border-2 border-stone-900 bg-transparent text-stone-900 hover:text-backgroundary ',
     outline: 'border border-gray-300 bg-transparent text-gray-800 hover:bg-gray-100',
     contact: 'border-2 border-primary bg-primary text-white hover:bg-primary/90',
   };

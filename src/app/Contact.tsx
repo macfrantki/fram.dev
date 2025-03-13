@@ -17,8 +17,8 @@ const languages = [
 
 export default function Contact() {
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
-      <div className="container mx-auto max-w-6xl px-4">
+    <section className="relative mx-auto w-full max-w-6xl overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
+      <div className="container mx-auto max-w-6xl px-4 lg:px-0">
         <div className="mt-16 flex flex-col lg:flex-row lg:gap-20">
           {/* Title Section - full width on mobile, 1/3 width on desktop */}
           <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-0 lg:w-1/3">

@@ -17,7 +17,7 @@ const Stats = ({ className = '' }) => (
       {statsData.map((stat, index) => (
         <div key={index} className="text-center">
           <p className="text-3xl font-bold text-primary md:text-4xl">{stat.value}</p>
-          <p className="text-sm text-gray-600 md:text-base">{stat.label}</p>
+          <p className="text-sm md:text-base">{stat.label}</p>
         </div>
       ))}
     </div>
@@ -27,18 +27,18 @@ const Stats = ({ className = '' }) => (
 export default function Services() {
   const [selectedCategoryId, setSelectedCategoryId] = useState('web-design');
   const { categories, getServicesByCategory } = useServiceData();
-  
+
   const selectedServices = getServicesByCategory(selectedCategoryId);
-  const selectedCategory = categories.find(cat => cat.id === selectedCategoryId);
+  const selectedCategory = categories.find((cat) => cat.id === selectedCategoryId);
 
   const handlePrevCategory = () => {
-    const currentIndex = categories.findIndex(cat => cat.id === selectedCategoryId);
+    const currentIndex = categories.findIndex((cat) => cat.id === selectedCategoryId);
     const prevIndex = currentIndex === 0 ? categories.length - 1 : currentIndex - 1;
     setSelectedCategoryId(categories[prevIndex].id);
   };
 
   const handleNextCategory = () => {
-    const currentIndex = categories.findIndex(cat => cat.id === selectedCategoryId);
+    const currentIndex = categories.findIndex((cat) => cat.id === selectedCategoryId);
     const nextIndex = currentIndex === categories.length - 1 ? 0 : currentIndex + 1;
     setSelectedCategoryId(categories[nextIndex].id);
   };
@@ -91,9 +91,12 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', duration: 1, delay: 0.8 }}
-              className="mx-auto text-lg leading-relaxed text-gray-700 md:w-2/3"
+              className="mx-auto text-lg leading-relaxed md:w-2/3"
             >
-              We&apos;re a boutique development studio that combines the agility of a startup with the expertise of seasoned professionals. Our approach blends technical innovation with practical business solutions, creating digital products that help our clients stand out in increasingly competitive markets.
+              We&apos;re a boutique development studio that combines the agility of a startup with
+              the expertise of seasoned professionals. Our approach blends technical innovation with
+              practical business solutions, creating digital products that help our clients stand
+              out in increasingly competitive markets.
             </motion.p>
           </motion.div>
 
@@ -103,9 +106,7 @@ export default function Services() {
             <div className="md:hidden">
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                  <button
                     onClick={handlePrevCategory}
                     className="rounded-full bg-primary/10 p-3 text-primary transition-colors hover:bg-primary/20"
                   >
@@ -117,12 +118,11 @@ export default function Services() {
                         d="M15 19l-7-7 7-7"
                       />
                     </svg>
-                  </motion.button>
+                  </button>
                   <motion.h3
                     key={selectedCategoryId}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     className="text-2xl font-bold text-primary"
                   >
                     {selectedCategory?.name}
@@ -149,11 +149,9 @@ export default function Services() {
                     {selectedServices.map((service, index) => (
                       <motion.div
                         key={service.id}
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group relative overflow-hidden rounded-lg border border-primary/20 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
+                        className="group relative overflow-hidden rounded-lg border border-primary/20 p-6 duration-300"
                       >
                         <div className="relative z-10">
                           <h4 className="mb-3 font-grotesk text-xl text-primary duration-300">
@@ -173,13 +171,13 @@ export default function Services() {
             </div>
 
             {/* Desktop Services View */}
-            <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/5 p-10 py-20 shadow-xl duration-300 hover:shadow-2xl md:block">
+            <div className="mx-auto hidden w-fit rounded-b-xl border border-primary/40 bg-gradient-to-tl from-primary/15 via-primary/10 to-primary/5 p-10 py-20 shadow-xl duration-300 hover:shadow-2xl md:block">
               <div className="mb-10 flex justify-center gap-16">
                 {categories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategoryId(category.id)}
-                    className={`group relative text-center font-grotesk text-xl transition-all duration-500 md:text-2xl ${
+                    className={`group relative px-2 text-center font-grotesk text-xl transition-all duration-500 md:text-2xl ${
                       selectedCategoryId === category.id ? 'text-primary' : 'hover:text-primary/80'
                     }`}
                   >
@@ -202,7 +200,7 @@ export default function Services() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5, staggerChildren: 0.1 }}
+                    transition={{ duration: 0.2, staggerChildren: 0.1 }}
                     className="mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2"
                   >
                     {selectedServices.map((service, index) => (
@@ -211,13 +209,11 @@ export default function Services() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        transition={{ duration: 0.2, delay: index * 0.1 }}
                         className="group relative cursor-default"
                       >
-                        <div className="relative h-[10rem] rounded-b-lg border border-transparent bg-gradient-to-tl from-primary/20 via-primary/10 to-primary/5 p-6 transition-all duration-500 hover:border-primary/40">
-                          <h4 className="mb-1 font-grotesk text-xl text-primary">
-                            {service.name}
-                          </h4>
+                        <div className="relative h-[10rem] rounded-b-lg border border-transparent p-6 hover:border-primary/40">
+                          <h4 className="mb-1 font-grotesk text-xl text-primary">{service.name}</h4>
                           <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
                           <p className="text-lg leading-relaxed">{service.description}</p>
                         </div>

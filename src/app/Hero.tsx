@@ -58,7 +58,7 @@ export default function Hero() {
           </motion.h2>
         </motion.div>
 
-        <motion.div className="container relative z-10 mx-auto mt-10 flex h-[45vh] flex-col px-4 sm:block lg:mt-0 lg:min-h-screen lg:justify-center lg:pt-20">
+        <motion.div className="container relative z-10 mx-auto mt-10 flex h-fit flex-col px-4 pb-8 sm:block lg:mt-0 lg:min-h-screen lg:justify-center lg:pb-0 lg:pt-20">
           <motion.div className="w-full lg:mt-20">
             {' '}
             <motion.h1

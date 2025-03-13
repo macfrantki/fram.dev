@@ -64,7 +64,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="w-full bg-stone-900 py-20">
-      <div className="container mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-32">
           {/* Brand Section */}
           <div className="lg:w-1/3">
@@ -131,7 +131,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-backgroundary lg:flex-row"
+          className="mt-16 flex max-w-5xl flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-backgroundary lg:flex-row"
         >
           <p>© 2024 FRAMA. All rights reserved.</p>
           <div className="flex gap-6">

@@ -21,7 +21,7 @@ export const SERVICE_CATEGORIES = [
     id: 'consulting',
     name: 'Consulting',
     order: 4,
-  }
+  },
 ];
 
 // Define service interface
@@ -45,7 +45,8 @@ export const SERVICES: Service[] = [
   {
     id: 'frontend-development',
     name: 'Frontend Development',
-    description: 'Responsive, modern interfaces using React, Next.js, and other cutting-edge frameworks',
+    description:
+      'Responsive, modern interfaces using React, Next.js, and other cutting-edge frameworks',
     category: 'web-design',
   },
   {
@@ -63,7 +64,7 @@ export const SERVICES: Service[] = [
   {
     id: 'cms-implementation',
     name: 'CMS Implementation',
-    description: 'WordPress, Webflow, and other content management systems customized for your workflow',
+    description: 'WordPress and other content management systems customized for your workflow',
     category: 'web-design',
   },
   {
@@ -72,7 +73,7 @@ export const SERVICES: Service[] = [
     description: 'Fast-loading, efficient websites that rank higher and convert better',
     category: 'web-design',
   },
-  
+
   // Backend & Custom Applications services
   {
     id: 'custom-web-applications',
@@ -110,7 +111,7 @@ export const SERVICES: Service[] = [
     description: 'Automated testing and deployment pipelines for reliable delivery',
     category: 'backend',
   },
-  
+
   // E-commerce services
   {
     id: 'custom-ecommerce',
@@ -145,10 +146,10 @@ export const SERVICES: Service[] = [
   {
     id: 'ecommerce-analytics',
     name: 'E-commerce Analytics',
-    description: 'Data-driven insights to optimize your online store\'s performance',
+    description: "Data-driven insights to optimize your online store's performance",
     category: 'ecommerce',
   },
-  
+
   // Consulting services
   {
     id: 'technical-audits',
@@ -184,7 +185,7 @@ export const SERVICES: Service[] = [
 
 // Utility function to get services by category
 export function getServicesByCategory(categoryId: string): Service[] {
-  return SERVICES.filter(service => service.category === categoryId);
+  return SERVICES.filter((service) => service.category === categoryId);
 }
 
 // Hook for services data
@@ -194,4 +195,4 @@ export function useServiceData() {
     services: SERVICES,
     getServicesByCategory,
   };
-} 
+}
