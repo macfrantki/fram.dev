@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 const Logo = () => (
   <svg className="size-10" viewBox="0 0 7 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,13 +67,7 @@ export default function Footer() {
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-32">
           {/* Brand Section */}
           <div className="lg:w-1/3">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
+            <div className="space-y-6">
               <Link href="/" className="flex items-center">
                 <Logo />
                 <span className="text-3xl font-semibold text-backgroundary">
@@ -92,19 +85,13 @@ export default function Footer() {
                   contact@frama.com
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Links Section */}
           <div className="grid flex-1 grid-cols-2 gap-8 lg:grid-cols-3">
-            {footerLinks.map((section, index) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
+            {footerLinks.map((section) => (
+              <div key={section.title}>
                 <h3 className="mb-6 font-grotesk text-sm font-semibold text-backgroundary">
                   {section.title}
                 </h3>
@@ -120,19 +107,13 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 flex max-w-5xl flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-backgroundary lg:flex-row"
-        >
+        <div className="mt-16 flex max-w-5xl flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-backgroundary lg:flex-row">
           <p>© 2024 FRAMA. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="#" className="transition-colors duration-300 hover:text-primary">
@@ -145,7 +126,7 @@ export default function Footer() {
               Instagram
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

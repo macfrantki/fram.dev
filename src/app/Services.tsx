@@ -46,59 +46,24 @@ export default function Services() {
   return (
     <section className="relative w-screen overflow-hidden bg-gradient-to-br from-primary/10 via-transparent to-primary/5 shadow-2xl lg:min-h-[150vh]">
       <div className="relative mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ type: 'spring', duration: 1 }}
-          className="mx-auto rounded-b-lg px-4 py-12 lg:mt-0 lg:px-8 lg:py-32"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-            className="flex flex-col items-center text-center"
-          >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', duration: 1, delay: 0.4 }}
-              className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-xl lg:font-bold"
-            >
+        <div className="mx-auto rounded-b-lg px-4 py-12 lg:mt-0 lg:px-8 lg:py-32">
+          <div className="flex flex-col items-center text-center">
+            <span className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary lg:text-xl lg:font-bold">
               ABOUT US
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', duration: 1, delay: 0.6 }}
-              className="mb-10 font-grotesk text-3xl font-bold md:text-4xl"
-            >
+            </span>
+            <h2 className="mb-10 font-grotesk text-3xl font-bold md:text-4xl">
               Small Team. <span className="text-primary">Big Impact.</span>
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', duration: 0.8, delay: 1.2 }}
-              className="mb-10"
-            >
+            </h2>
+            <div className="mb-10">
               <Stats className="justify-start" />
-            </motion.div>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', duration: 1, delay: 0.8 }}
-              className="mx-auto text-lg leading-relaxed md:w-2/3"
-            >
+            </div>
+            <p className="mx-auto text-lg leading-relaxed md:w-2/3">
               We&apos;re a boutique development studio that combines the agility of a startup with
               the expertise of seasoned professionals. Our approach blends technical innovation with
               practical business solutions, creating digital products that help our clients stand
               out in increasingly competitive markets.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Services Section */}
           <div className="mt-10 flex flex-col gap-16 lg:mt-20">
@@ -205,7 +170,7 @@ export default function Services() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

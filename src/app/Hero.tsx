@@ -93,8 +93,8 @@ export default function Hero() {
               </motion.span>
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', duration: 0.8, delay: 1 }}
               className="mt-6 text-center text-base text-gray-900 sm:text-left md:max-w-2xl md:text-lg lg:text-xl"
             >
@@ -102,7 +102,7 @@ export default function Hero() {
               templates. Just powerful digital experiences that drive business growth.
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', duration: 0.8, delay: 1 }}
               className="mt-8 flex justify-center gap-4 md:mt-12 md:justify-start"

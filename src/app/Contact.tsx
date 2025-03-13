@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 interface _FormData {
   name: string;
   email: string;
@@ -22,66 +20,36 @@ export default function Contact() {
         <div className="mt-16 flex flex-col lg:flex-row lg:gap-20">
           {/* Title Section - full width on mobile, 1/3 width on desktop */}
           <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-0 lg:w-1/3">
-            <motion.h2
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-4 font-grotesk text-4xl font-bold sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-            >
+            <h2 className="mb-4 font-grotesk text-4xl font-bold sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
               Let&apos;s <span className="text-primary">Talk</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base text-gray-600 sm:text-lg"
-            >
+            </h2>
+            <p className="text-base text-gray-600 sm:text-lg">
               Ready to start your project? We&apos;re here to help bring your vision to life. Drop
               us a message and let&apos;s create something amazing together.
-            </motion.p>
+            </p>
           </div>
 
           {/* Form Section - full width on mobile, 2/3 width on desktop */}
           <div className="relative font-grotesk lg:w-2/3">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
+            <div>
               {/* Language bar at the top of the form */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="absolute left-0 right-0 top-0 z-40 border-b-2 border-primary/20 bg-gradient-to-r from-transparent via-primary/5 to-transparent py-2"
-              >
+              <div className="absolute left-0 right-0 top-0 z-40 border-b-2 border-primary/20 bg-gradient-to-r from-transparent via-primary/5 to-transparent py-2">
                 <div className="flex cursor-default items-center justify-center gap-4">
                   <span className="text-sm font-thin text-primary">We speak:</span>
                   <div className="flex gap-6">
-                    {languages.map((lang, index) => (
-                      <motion.div
-                        key={lang.code}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                        className="group flex items-center"
-                      >
+                    {languages.map((lang) => (
+                      <div key={lang.code} className="group flex items-center">
                         <div className="flex items-center gap-1 transition-transform duration-300 group-hover:scale-110">
                           <span className="text-lg">{lang.flag}</span>
                           <span className="hidden text-xs font-medium text-gray-600 group-hover:text-primary sm:inline-block">
                             {lang.name}
                           </span>
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
               <form
                 data-netlify="true"
                 name="contact"
@@ -147,7 +115,7 @@ export default function Contact() {
                   </button>
                 </div>
               </form>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
