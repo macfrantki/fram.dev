@@ -86,7 +86,7 @@ export default function Contact() {
                 data-netlify="true"
                 name="contact"
                 method="POST"
-                className="relative z-20 space-y-6 rounded-lg border border-primary/30 bg-gradient-to-tr from-primary/10 via-transparent to-primary/20 p-4 pt-14 shadow-xl duration-300 hover:shadow-2xl sm:space-y-8 sm:p-6 md:p-8"
+                className="relative z-20 space-y-6 rounded-lg border border-primary/30 bg-gradient-to-tr from-primary/10 via-transparent to-primary/20 p-4 pt-14 shadow-xl duration-300 sm:space-y-8 sm:p-6 md:p-8"
               >
                 {/* Hidden input for Netlify Forms */}
                 <input type="hidden" name="form-name" value="contact" />

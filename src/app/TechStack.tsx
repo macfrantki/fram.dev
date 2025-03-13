@@ -99,8 +99,8 @@ const techStack: TechCategory[] = [
     technologies: [
       { name: 'Python', icon: <SiPython className="h-8 w-8 md:h-10 md:w-10" /> },
       { name: 'Django', icon: <SiDjango className="h-8 w-8 md:h-10 md:w-10" /> },
-      { name: 'Node.js', icon: <SiNodedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
       { name: 'FastAPI', icon: <SiFastapi className="h-8 w-8 md:h-10 md:w-10" /> },
+      { name: 'Node.js', icon: <SiNodedotjs className="h-8 w-8 md:h-10 md:w-10" /> },
       { name: 'PostgreSQL', icon: <SiPostgresql className="h-8 w-8 md:h-10 md:w-10" /> },
       { name: 'MongoDB', icon: <SiMongodb className="h-8 w-8 md:h-10 md:w-10" /> },
       { name: 'Redis', icon: <SiRedis className="h-8 w-8 md:h-10 md:w-10" /> },
@@ -158,27 +158,20 @@ export default function TechStack() {
   return (
     <section className="w-full overflow-hidden rounded-b-xl bg-stone-900 py-12 shadow-2xl duration-300 hover:shadow-3xl sm:rounded-b-2xl md:py-16 lg:py-24">
       <div className="container mx-auto max-w-6xl px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 text-center font-grotesk text-4xl font-bold text-backgroundary sm:mb-12 sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl"
-        >
+        <h2 className="mb-8 text-center font-grotesk text-4xl font-bold text-backgroundary sm:mb-12 sm:text-5xl md:mb-16 md:text-6xl lg:text-8xl">
           Our <span className="text-primary">Technologies</span>
-        </motion.h2>
+        </h2>
 
         {/* Category Tabs */}
         <div className="mb-8 md:mb-12">
-          <div className="mx-auto flex flex-col gap-2 border-gray-800 pb-1 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 sm:border-b">
+          <div className="mx-auto flex w-fit flex-col gap-2 border-gray-800 pb-1 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 sm:border-b">
             {techStack.map((category, index) => (
-              <motion.button
+              <button
                 key={category.title}
                 onClick={() => setActiveTab(index)}
                 className={`group relative flex items-center justify-start gap-2 px-3 py-2 text-sm font-medium transition-all duration-300 ${
                   activeTab === index ? 'text-primary' : 'text-gray-500 hover:text-gray-300'
                 }`}
-                whileTap={{ scale: 0.95 }}
               >
                 <span className="text-current">{category.icon}</span>
                 <span className="whitespace-nowrap">{category.title}</span>
@@ -187,7 +180,7 @@ export default function TechStack() {
                     activeTab === index ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-[0.3]'
                   }`}
                 ></span>
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
@@ -195,40 +188,26 @@ export default function TechStack() {
 
         {/* Tech Icons for Selected Category */}
         <div className="relative mx-auto min-h-[280px] sm:min-h-[100px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="grid grid-cols-2 justify-center gap-6 sm:grid-cols-3 md:flex md:flex-wrap md:gap-14"
-              >
-                {techStack[activeTab].technologies.map((tech, techIndex) => (
-                  <motion.div
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.05 * techIndex }}
-                    className="group flex w-full flex-col items-center justify-start gap-3 md:w-[120px]"
-                  >
-                    <div className="text-gray-600 transition-colors duration-300 group-hover:text-primary">
-                      {tech.icon}
-                    </div>
-                    <span className="text-center text-xs text-gray-500 transition-colors duration-300 group-hover:text-gray-300 sm:text-sm">
-                      {tech.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
+          <div className="absolute inset-0">
+            <div className="grid grid-cols-2 justify-center gap-6 sm:grid-cols-3 md:flex md:flex-wrap md:gap-14">
+              {techStack[activeTab].technologies.map((tech, techIndex) => (
+                <motion.div
+                  key={tech.name}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.05 * techIndex }}
+                  className="group flex w-full flex-col items-center justify-start gap-3 md:w-[120px]"
+                >
+                  <div className="text-gray-600 transition-colors duration-300 group-hover:text-primary">
+                    {tech.icon}
+                  </div>
+                  <span className="text-center text-xs text-gray-500 transition-colors duration-300 group-hover:text-gray-300 sm:text-sm">
+                    {tech.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

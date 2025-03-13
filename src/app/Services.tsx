@@ -119,17 +119,8 @@ export default function Services() {
                       />
                     </svg>
                   </button>
-                  <motion.h3
-                    key={selectedCategoryId}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="text-2xl font-bold text-primary"
-                  >
-                    {selectedCategory?.name}
-                  </motion.h3>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                  <h3 className="text-2xl font-bold text-primary">{selectedCategory?.name}</h3>
+                  <button
                     onClick={handleNextCategory}
                     className="rounded-full bg-primary/10 p-3 text-primary transition-colors hover:bg-primary/20"
                   >
@@ -141,15 +132,15 @@ export default function Services() {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </motion.button>
+                  </button>
                 </div>
 
                 <div className="mt-12 space-y-6">
-                  <AnimatePresence mode="wait">
+                  <motion.div className="space-y-6">
                     {selectedServices.map((service, index) => (
                       <motion.div
                         key={service.id}
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="group relative overflow-hidden rounded-lg border border-primary/20 p-6 duration-300"
                       >
@@ -165,7 +156,7 @@ export default function Services() {
                         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/15 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                       </motion.div>
                     ))}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -194,33 +185,23 @@ export default function Services() {
               </div>
 
               <div className="w-full">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedCategoryId}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2, staggerChildren: 0.1 }}
-                    className="mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2"
-                  >
-                    {selectedServices.map((service, index) => (
-                      <motion.div
-                        key={service.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.2, delay: index * 0.1 }}
-                        className="group relative cursor-default"
-                      >
-                        <div className="relative h-[10rem] rounded-b-lg border border-transparent p-6 hover:border-primary/40">
-                          <h4 className="mb-1 font-grotesk text-xl text-primary">{service.name}</h4>
-                          <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
-                          <p className="text-lg leading-relaxed">{service.description}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </AnimatePresence>
+                <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2">
+                  {selectedServices.map((service, index) => (
+                    <motion.div
+                      key={service.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: index * 0.1 }}
+                      className="group relative cursor-default"
+                    >
+                      <div className="relative h-[10rem] rounded-b-lg border border-transparent p-6 hover:border-primary/40">
+                        <h4 className="mb-1 font-grotesk text-xl text-primary">{service.name}</h4>
+                        <div className="mb-4 h-[2px] w-full origin-left scale-x-0 transform bg-primary/20 transition-transform duration-1000 group-hover:scale-x-100"></div>
+                        <p className="text-lg leading-relaxed">{service.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
