@@ -1,10 +1,12 @@
 import { Metadata } from 'next';
-import { getAboutContent } from '@/lib/about';
 import JsonLd from '@/components/seo/JsonLd';
+import { getAboutContent } from '@/lib/content-api';
+
+export const dynamic = 'force-static';
 
 export async function generateMetadata(): Promise<Metadata> {
   const aboutData = await getAboutContent();
-
+  
   if (!aboutData) {
     return {
       title: 'About | FRAM.DEV',
@@ -19,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     };
   }
-
+  
   return {
     title: `${aboutData.frontmatter.title} | FRAM.DEV`,
     description: aboutData.frontmatter.excerpt,
@@ -37,32 +39,37 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AboutPage() {
   const aboutData = await getAboutContent();
-
+  
   if (!aboutData) {
     return (
       <div className="container mx-auto px-4 py-16">
-        <h1 className="mb-8 text-4xl font-bold">About Us</h1>
+        <h1 className="text-4xl font-bold mb-8">About Us</h1>
         <p>Information about our company is currently unavailable. Please check back later.</p>
       </div>
     );
   }
-
+  
   return (
     <>
-      <JsonLd
+      <JsonLd 
         type="organization"
         data={{
-          name: 'FRAM.DEV',
-          url: 'https://fram.dev',
-          logo: 'https://fram.dev/images/logo.svg',
+          name: "FRAM.DEV",
+          url: "https://fram.dev",
+          logo: "https://fram.dev/images/logo.svg",
           description: aboutData.frontmatter.excerpt,
-          sameAs: ['https://twitter.com/framdev', 'https://github.com/framdev'],
+          sameAs: [
+            "https://twitter.com/framdev",
+            "https://github.com/framdev"
+          ]
         }}
       />
       <main className="container mx-auto px-4 py-16">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
-            <div className="prose prose-lg dark:prose-invert max-w-none">{aboutData.content}</div>
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <div dangerouslySetInnerHTML={{ __html: aboutData.content.compiledSource }} />
+            </div>
           </div>
         </div>
       </main>

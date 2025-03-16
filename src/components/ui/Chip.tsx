@@ -1,67 +1,67 @@
 'use client';
 
+import React from 'react';
 import { cn } from '@/utils/cn';
 
 interface ChipProps {
-  label: string;
-  color?: 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
-  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
   className?: string;
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'default';
   onClick?: () => void;
 }
 
-export function Chip({ label, color = 'default', size = 'md', className, onClick }: ChipProps) {
-  const colorStyles = {
-    default: 'bg-gray-100 text-gray-800',
-    primary: 'bg-primary/10 text-primary',
-    secondary: 'bg-gray-700/10 text-gray-700',
-    success: 'bg-green-100 text-green-800',
-    danger: 'bg-red-100 text-red-800',
-    warning: 'bg-amber-100 text-amber-800',
-    info: 'bg-blue-100 text-blue-800',
+export function Chip({
+  children,
+  className,
+  size = 'md',
+  color = 'default',
+  onClick,
+}: ChipProps) {
+  const sizeClasses = {
+    sm: 'px-2 py-1 text-xs',
+    md: 'px-3 py-1 text-sm',
+    lg: 'px-4 py-2 text-base',
   };
 
-  const sizeStyles = {
-    sm: 'text-xs px-2 py-0.5',
-    md: 'text-sm px-2.5 py-0.5',
-    lg: 'text-base px-3 py-1',
+  const colorClasses = {
+    primary: 'bg-primary/10 text-primary border-primary/20',
+    secondary: 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600',
+    default: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
   };
 
-  // If onClick is provided, render as a button for accessibility
+  // If onClick is provided, render a button for better accessibility
   if (onClick) {
     return (
       <button
         type="button"
         className={cn(
-          'inline-flex items-center rounded-full border-none font-medium',
-          colorStyles[color],
-          sizeStyles[size],
-          'cursor-pointer hover:opacity-80',
+          'inline-flex items-center justify-center rounded-full font-medium',
+          'border border-transparent transition-colors',
+          sizeClasses[size],
+          colorClasses[color],
+          'cursor-pointer hover:brightness-95',
           className
         )}
         onClick={onClick}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            onClick();
-          }
-        }}
       >
-        {label}
+        {children}
       </button>
     );
   }
 
-  // Otherwise, render as a span (non-interactive)
+  // Otherwise, render a span
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full font-medium',
-        colorStyles[color],
-        sizeStyles[size],
+        'inline-flex items-center justify-center rounded-full font-medium',
+        'border border-transparent transition-colors',
+        sizeClasses[size],
+        colorClasses[color],
         className
       )}
     >
-      {label}
+      {children}
     </span>
   );
 }

@@ -2,78 +2,63 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { fadeInUp } from '@/utils/animations';
+import { Chip } from '@/components/ui/Chip';
 
 interface ProjectCardProps {
   slug: string;
   title: string;
   description: string;
-  coverImage: string;
+  image: string;
   technologies: string[];
   category: string;
-  featured?: boolean;
-  index: number;
 }
 
 export default function ProjectCard({
   slug,
   title,
   description,
-  coverImage,
+  image,
   technologies,
   category,
-  featured,
-  index,
 }: ProjectCardProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      animate="visible"
-      transition={{ delay: index * 0.1 }}
-      className="overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
-    >
-      <Link href={`/projects/${slug}`} className="group block h-full">
+    <Link href={`/projects/${slug}`} className="group">
+      <div className="h-full overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg dark:bg-gray-800">
+        {/* Image */}
         <div className="relative aspect-video overflow-hidden">
           <Image
-            src={coverImage}
+            src={image}
             alt={title}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          {featured && (
-            <div className="absolute right-0 top-0 bg-primary px-3 py-1 text-sm font-medium text-white">
-              Featured
-            </div>
-          )}
+          {/* Category badge */}
+          <div className="absolute right-3 top-3 rounded-full bg-primary/90 px-3 py-1 text-xs font-medium uppercase text-white backdrop-blur-sm">
+            {category}
+          </div>
         </div>
 
-        <div className="p-5">
-          <div className="mb-2 text-xs text-gray-500">{category}</div>
-          <h3 className="mb-2 text-xl font-bold transition-colors group-hover:text-primary">
+        {/* Content */}
+        <div className="p-6">
+          <h3 className="mb-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-gray-100">
             {title}
           </h3>
-          <p className="mb-4 line-clamp-2 text-sm text-gray-700">{description}</p>
-
+          <p className="mb-6 text-gray-600 line-clamp-2 dark:text-gray-300">{description}</p>
+          
+          {/* Technologies */}
           <div className="flex flex-wrap gap-2">
             {technologies.slice(0, 3).map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800"
-              >
+              <Chip key={tech} size="sm">
                 {tech}
-              </span>
+              </Chip>
             ))}
             {technologies.length > 3 && (
-              <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800">
-                +{technologies.length - 3}
-              </span>
+              <Chip size="sm">+{technologies.length - 3}</Chip>
             )}
           </div>
         </div>
-      </Link>
-    </motion.div>
+      </div>
+    </Link>
   );
 }

@@ -20,6 +20,7 @@
     "commitlint": "commitlint --edit"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.2.2",
@@ -32,14 +33,17 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-code-titles": "^1.2.0",
     "rehype-pretty-code": "^0.14.1",
     "rehype-prism-plus": "^2.0.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "sharp": "^0.33.5",
     "shiki": "^3.2.1",
-    "tailwind-merge": "^3.0.2"
+    "tailwind-merge": "^3.0.2",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",

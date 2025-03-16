@@ -2,12 +2,16 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Chip } from '@/components/ui/Chip';
-import { getProjectData, getProjectSlugs, getAllProjects } from '@/utils/mdx';
 import Link from 'next/link';
 import JsonLd from '@/components/seo/JsonLd';
+import { getProjectBySlug, getProjectSlugs } from '@/lib/content-api';
+import TableOfContents from '@/components/mdx/TableOfContents';
+import ReadingTime from '@/components/mdx/ReadingTime';
+
+export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
-  const slugs = getProjectSlugs();
+  const slugs = await getProjectSlugs();
   return slugs.map((slug) => ({
     slug,
   }));
@@ -19,7 +23,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   try {
-    const project = await getProjectData(params.slug);
+    const project = await getProjectBySlug(params.slug);
 
     return {
       title: `${project.frontmatter.title} | FRAM.DEV Projects`,
@@ -52,8 +56,8 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
   try {
-    const project = await getProjectData(params.slug);
-    const { frontmatter, content } = project;
+    const project = await getProjectBySlug(params.slug);
+    const { frontmatter, content, readingTime, tableOfContents } = project;
 
     return (
       <>
@@ -86,6 +90,11 @@ export default async function ProjectPage({ params }: { params: { slug: string }
             </div>
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">{frontmatter.title}</h1>
             <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">{frontmatter.description}</p>
+            <ReadingTime
+              minutes={readingTime.minutes}
+              words={readingTime.words}
+              className="mb-6"
+            />
             <div className="mb-8 flex flex-wrap gap-2">
               {frontmatter.technologies.map((tech) => (
                 <Chip key={tech}>{tech}</Chip>
@@ -123,12 +132,18 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               width={1200}
               height={675}
               className="h-auto w-full"
+              priority
             />
           </div>
 
           {/* Project Details */}
           <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="md:col-span-3">
+              {tableOfContents.length > 0 && (
+                <div className="mb-8 block lg:hidden">
+                  <TableOfContents items={tableOfContents} />
+                </div>
+              )}
               <h2 className="mb-4 text-2xl font-bold">Project Overview</h2>
               {/* Render the MDX content */}
               <div className="prose dark:prose-invert max-w-none">
@@ -136,32 +151,40 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               </div>
             </div>
             <div className="md:col-span-1">
-              <div className="rounded-lg bg-gray-100 p-6 dark:bg-gray-800">
-                <h3 className="mb-4 text-xl font-bold">Project Details</h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-gray-600 dark:text-gray-300">Client</h4>
-                    <p>{frontmatter.client || 'Personal Project'}</p>
+              <div className="sticky top-24 space-y-8">
+                {tableOfContents.length > 0 && (
+                  <div className="hidden lg:block">
+                    <TableOfContents items={tableOfContents} />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-600 dark:text-gray-300">Category</h4>
-                    <p>{frontmatter.category}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-600 dark:text-gray-300">Completed</h4>
-                    <p>{new Date(frontmatter.date).toLocaleDateString()}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-600 dark:text-gray-300">Tags</h4>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {frontmatter.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                )}
+              
+                <div className="rounded-lg bg-gray-100 p-6 dark:bg-gray-800">
+                  <h3 className="mb-4 text-xl font-bold">Project Details</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-600 dark:text-gray-300">Client</h4>
+                      <p>{frontmatter.client || 'Personal Project'}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-600 dark:text-gray-300">Category</h4>
+                      <p>{frontmatter.category}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-600 dark:text-gray-300">Completed</h4>
+                      <p>{new Date(frontmatter.date).toLocaleDateString()}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-600 dark:text-gray-300">Tags</h4>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {frontmatter.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -172,6 +195,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       </>
     );
   } catch (error) {
+    console.error("Error rendering project:", error);
     notFound();
   }
 }
