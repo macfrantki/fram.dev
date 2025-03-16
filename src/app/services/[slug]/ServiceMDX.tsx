@@ -1,15 +1,15 @@
-import { getMdxContent } from '@/lib/mdx';
+import { getServiceBySlug } from '@/lib/content-api';
 
 export default async function ServiceMDX({ slug }: { slug: string }) {
-  const content = await getMdxContent(slug);
+  const service = await getServiceBySlug(slug);
 
-  if (!content) {
+  if (!service) {
     return null;
   }
 
   return (
     <div className="prose prose-sm dark:prose-invert max-w-none">
-      {content.content}
+      {service.content}
     </div>
   );
 }

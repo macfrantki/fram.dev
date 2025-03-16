@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllServices } from '@/lib/mdx';
+import { getAllServices } from '@/lib/content-api';
 import path from 'path';
 import fs from 'fs/promises';
 

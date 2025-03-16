@@ -1,5 +1,5 @@
-import { getServices } from '@/app/data/services/services';
-import { SERVICE_CATEGORIES } from '@/app/data/services/categories';
+import { getServices } from '@/services/services/services';
+import { SERVICE_CATEGORIES } from '@/services/services/categories';
 import { notFound } from 'next/navigation';
 import ServiceMDX from './ServiceMDX';
 import { Suspense } from 'react';

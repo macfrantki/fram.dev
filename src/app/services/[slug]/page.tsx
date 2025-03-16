@@ -1,4 +1,4 @@
-import { SERVICE_CATEGORIES } from '@/app/data/services/categories';
+import { SERVICE_CATEGORIES } from '@/services/services/categories';
 import { ServiceContent } from './ServiceContent';
 import { Metadata } from 'next';
 import JsonLd from '@/components/seo/JsonLd';
