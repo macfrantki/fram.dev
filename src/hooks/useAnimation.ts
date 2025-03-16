@@ -14,7 +14,7 @@ type UseAnimationHookResult = {
 export function useInViewAnimation(threshold = 0.1): UseAnimationHookResult {
   const controls = useAnimation();
   const elementRef = useRef<HTMLElement | null>(null);
-  const [inView, setInView] = useState(false);
+  const [_inView, setInView] = useState(false);
   
   useEffect(() => {
     const currentElement = elementRef.current;
