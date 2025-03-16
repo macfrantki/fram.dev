@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getMdxContent } from '@/lib/mdx';
+import { getServiceBySlug } from '@/lib/content-api';
 
 export function useMdxContent(slug: string) {
   const [content, setContent] = useState<React.ReactNode | null>(null);
@@ -10,7 +10,7 @@ export function useMdxContent(slug: string) {
     async function fetchContent() {
       try {
         setIsLoading(true);
-        const result = await getMdxContent(slug);
+        const result = await getServiceBySlug(slug);
         setContent(result?.content ?? null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch MDX content'));

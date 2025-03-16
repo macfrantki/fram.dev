@@ -44,8 +44,8 @@ export default function ProjectCard({
           <h3 className="mb-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-gray-100">
             {title}
           </h3>
-          <p className="mb-6 text-gray-600 line-clamp-2 dark:text-gray-300">{description}</p>
-          
+          <p className="mb-6 line-clamp-2 text-gray-600 dark:text-gray-300">{description}</p>
+
           {/* Technologies */}
           <div className="flex flex-wrap gap-2">
             {technologies.slice(0, 3).map((tech) => (
@@ -53,9 +53,7 @@ export default function ProjectCard({
                 {tech}
               </Chip>
             ))}
-            {technologies.length > 3 && (
-              <Chip size="sm">+{technologies.length - 3}</Chip>
-            )}
+            {technologies.length > 3 && <Chip size="sm">+{technologies.length - 3}</Chip>}
           </div>
         </div>
       </div>

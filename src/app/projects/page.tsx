@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();
-  
+
   return (
     <div className="container mx-auto px-4 py-16">
       <h1 className="mb-8 text-4xl font-bold">Our Projects</h1>
       <p className="mb-12 max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-        Explore our portfolio of web development projects. We&apos;ve worked with a diverse range of clients to create 
-        custom solutions that meet their specific needs.
+        Explore our portfolio of web development projects. We&apos;ve worked with a diverse range of
+        clients to create custom solutions that meet their specific needs.
       </p>
-      
+
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard

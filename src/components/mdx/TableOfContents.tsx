@@ -15,10 +15,7 @@ interface TableOfContentsProps {
   className?: string;
 }
 
-export default function TableOfContents({
-  items,
-  className,
-}: TableOfContentsProps) {
+export default function TableOfContents({ items, className }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('');
 
   // Track active section while scrolling
@@ -67,7 +64,7 @@ export default function TableOfContents({
               'transition-colors duration-200',
               item.level === 2 ? 'ml-0' : 'ml-4',
               activeId === item.slug
-                ? 'text-primary font-medium'
+                ? 'font-medium text-primary'
                 : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
             )}
           >
@@ -88,4 +85,4 @@ export default function TableOfContents({
       </ul>
     </nav>
   );
-} 
+}

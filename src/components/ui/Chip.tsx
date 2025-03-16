@@ -11,13 +11,7 @@ interface ChipProps {
   onClick?: () => void;
 }
 
-export function Chip({
-  children,
-  className,
-  size = 'md',
-  color = 'default',
-  onClick,
-}: ChipProps) {
+export function Chip({ children, className, size = 'md', color = 'default', onClick }: ChipProps) {
   const sizeClasses = {
     sm: 'px-2 py-1 text-xs',
     md: 'px-3 py-1 text-sm',
@@ -26,7 +20,8 @@ export function Chip({
 
   const colorClasses = {
     primary: 'bg-primary/10 text-primary border-primary/20',
-    secondary: 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600',
+    secondary:
+      'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600',
     default: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
   };
 
