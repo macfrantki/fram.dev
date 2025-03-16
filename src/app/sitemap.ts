@@ -2,7 +2,11 @@ import { MetadataRoute } from 'next';
 import { getAllServices } from '@/lib/mdx';
 import path from 'path';
 import fs from 'fs/promises';
-import { Project } from '@/types';
+
+// Define Project type locally since it's not exported from @/types
+interface Project {
+  slug: string;
+}
 
 // Configure this route for static export
 export const dynamic = 'force-static';
@@ -23,7 +27,7 @@ async function getAllProjects(): Promise<Project[]> {
   }
 }
 
-export default async function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://fram.dev';
   const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
 

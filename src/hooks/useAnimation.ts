@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, MutableRefObject } from 'react';
 import { useAnimation, AnimationControls } from 'framer-motion';
 
-type UseAnimationHookResult = {
+// Use a more specific type for the hook result
+interface UseAnimationHookResult {
   controls: AnimationControls;
-  ref: React.RefObject<HTMLElement>;
-};
+  // Use a less strict type for the ref
+  ref: MutableRefObject<HTMLDivElement | null>;
+}
 
 /**
  * Custom hook for triggering animations when an element is in view
@@ -13,7 +15,8 @@ type UseAnimationHookResult = {
  */
 export function useInViewAnimation(threshold = 0.1): UseAnimationHookResult {
   const controls = useAnimation();
-  const elementRef = useRef<HTMLElement | null>(null);
+  // Use the correct type from the beginning
+  const elementRef = useRef<HTMLDivElement>(null);
   const [_inView, setInView] = useState(false);
 
   useEffect(() => {

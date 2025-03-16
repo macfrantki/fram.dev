@@ -61,6 +61,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'border-2 border-stone-900 bg-transparent text-stone-900 hover:text-backgroundary ',
       outline: 'border border-gray-300 bg-transparent text-gray-800 hover:bg-gray-100',
       contact: 'border-2 border-primary bg-primary text-white hover:bg-primary/90',
+      ghost: 'bg-transparent text-gray-800 hover:bg-gray-100',
+      link: 'bg-transparent text-primary hover:underline',
     };
 
     // Rounding classes
