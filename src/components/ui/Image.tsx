@@ -10,10 +10,12 @@ interface ImageProps extends Omit<NextImageProps, 'alt'> {
   imgClassName?: string;
   aspectRatio?: string;
   fill?: boolean;
+  priority?: boolean;
+  sizes?: string;
 }
 
 /**
- * Optimized image component with image loading animation
+ * Optimized image component with image loading animation and enhanced accessibility
  */
 export default function Image({
   alt,
@@ -24,9 +26,17 @@ export default function Image({
   width,
   height,
   aspectRatio,
+  priority = false,
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
   ...props
 }: ImageProps) {
   const [isLoading, setIsLoading] = useState(true);
+
+  // Force alt text for accessibility
+  if (!alt || alt === '') {
+    console.warn('Image component requires an alt text for accessibility');
+    alt = 'Visual content'; // Fallback alt text
+  }
 
   return (
     <div
@@ -37,6 +47,7 @@ export default function Image({
         aspectRatio,
         className
       )}
+      aria-hidden={alt === 'Visual content' ? true : undefined}
     >
       <NextImage
         className={cn(
@@ -49,6 +60,8 @@ export default function Image({
         width={fill ? undefined : width}
         height={fill ? undefined : height}
         fill={fill}
+        priority={priority}
+        sizes={sizes}
         onLoadingComplete={() => setIsLoading(false)}
         {...props}
       />
