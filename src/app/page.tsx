@@ -1,17 +1,60 @@
-'use client';
+import { Metadata } from 'next';
+import Hero from '@/components/sections/Hero';
+import BackgroundCircles from '@/components/background/BackgroundCircles';
+import BackgroundPaths from '@/components/background/BackgroundPaths';
+import Services from '@/components/sections/Services';
+import { getServices } from '@/services/services/services';
+import HomeClient from '@/components/sections/HomeClient';
+import JsonLd from '@/components/seo/JsonLd';
 
-import Hero from './Hero';
-import TechStack from './TechStack';
-import Contact from './Contact';
-import Services from './Services';
+export const metadata: Metadata = {
+  title: 'FRAM.DEV | Modern Web Development Studio',
+  description:
+    'Professional web development services for businesses looking to establish a powerful digital presence',
+  alternates: {
+    canonical: 'https://fram.dev',
+  },
+  openGraph: {
+    title: 'FRAM.DEV | Modern Web Development Studio',
+    description:
+      'Professional web development services for businesses looking to establish a powerful digital presence',
+    url: 'https://fram.dev',
+    type: 'website',
+  },
+};
 
-export default function Home() {
+export default async function Home() {
+  const services = await getServices();
   return (
-    <div className="">
-      <Hero />
-      <Services />
-      <TechStack />
-      <Contact />
-    </div>
+    <>
+      <JsonLd
+        type="website"
+        data={{
+          name: 'FRAM.DEV',
+          url: 'https://fram.dev',
+          description:
+            'Professional web development services for businesses looking to establish a powerful digital presence',
+          siteUrl: 'https://fram.dev',
+        }}
+      />
+      <JsonLd
+        type="organization"
+        data={{
+          name: 'FRAM.DEV',
+          url: 'https://fram.dev',
+          logo: 'https://fram.dev/images/logo.svg',
+          description:
+            'Modern web development studio specializing in high-performance websites and applications',
+          sameAs: ['https://twitter.com/framdev', 'https://github.com/framdev'],
+        }}
+      />
+      <main className="relative">
+        <BackgroundCircles />
+        <BackgroundPaths />
+        <Hero />
+        <Services services={services} />
+        <HomeClient />
+      </main>
+    </>
   );
 }
