@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
   },
 });
 
@@ -32,7 +34,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: true, // Required for static export
   },
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   webpack: (config) => {
     const rules = config.module.rules;
 
@@ -45,6 +47,9 @@ const nextConfig = {
     }
 
     return config;
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 

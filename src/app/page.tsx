@@ -1,17 +1,15 @@
-'use client';
-
 import Hero from './Hero';
-import TechStack from './TechStack';
-import Contact from './Contact';
-import Services from './Services';
+import Services from './components/Services';
+import { getServices } from '@/app/data/services/services';
+import HomeClient from './components/HomeClient';
 
-export default function Home() {
+export default async function Home() {
+  const services = await getServices();
   return (
     <div className="">
       <Hero />
-      <Services />
-      <TechStack />
-      <Contact />
+      <Services services={services} />
+      <HomeClient />
     </div>
   );
 }
