@@ -1,7 +1,7 @@
 'use client';
 
 import { Service } from '@/types/services';
-import { SERVICE_CATEGORIES } from '@/app/data/services/categories';
+import { SERVICE_CATEGORIES } from '@/services/services/categories';
 import ServiceCard from './ServiceCard';
 
 interface DesktopServicesProps {

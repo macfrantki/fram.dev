@@ -92,12 +92,10 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               </Link>
             </div>
             <h1 className="mb-4 text-4xl font-bold md:text-5xl">{frontmatter.title}</h1>
-            <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">{frontmatter.description}</p>
-            <ReadingTime
-              minutes={readingTime.minutes}
-              words={readingTime.words}
-              className="mb-6"
-            />
+            <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+              {frontmatter.description}
+            </p>
+            <ReadingTime minutes={readingTime.minutes} words={readingTime.words} className="mb-6" />
             <div className="mb-8 flex flex-wrap gap-2">
               {frontmatter.technologies.map((tech) => (
                 <Chip key={tech}>{tech}</Chip>
@@ -149,9 +147,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               )}
               <h2 className="mb-4 text-2xl font-bold">Project Overview</h2>
               {/* Render the MDX content */}
-              <div className="prose dark:prose-invert max-w-none">
-                {content}
-              </div>
+              <div className="prose dark:prose-invert max-w-none">{content}</div>
             </div>
             <div className="md:col-span-1">
               <div className="sticky top-24 space-y-8">
@@ -160,7 +156,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                     <TableOfContents items={tableOfContents} />
                   </div>
                 )}
-              
+
                 <div className="rounded-lg bg-gray-100 p-6 dark:bg-gray-800">
                   <h3 className="mb-4 text-xl font-bold">Project Details</h3>
                   <div className="space-y-4">
@@ -198,7 +194,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       </>
     );
   } catch (error) {
-    console.error("Error rendering project:", error);
+    console.error('Error rendering project:', error);
     notFound();
   }
 }

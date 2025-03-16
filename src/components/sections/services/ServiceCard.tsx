@@ -13,7 +13,7 @@ export default function ServiceCard({ service, variant }: ServiceCardProps) {
   const isMobile = variant === 'mobile';
 
   return (
-    <Link href={`/service/${service.slug}`} className="block">
+    <Link href={`/services/${service.slug}`} className="block">
       <motion.div
         initial={{ opacity: 0, x: isMobile ? 10 : 20 }}
         animate={{ opacity: 1, x: 0 }}

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllServices } from '@/lib/mdx';
+import { getAllServices } from '@/lib/content-api';
 import path from 'path';
 import fs from 'fs/promises';
 
@@ -14,7 +14,7 @@ export const dynamic = 'force-static';
 // Helper to get all projects
 async function getAllProjects(): Promise<Project[]> {
   try {
-    const projectsDir = path.join(process.cwd(), 'src/content/projects');
+    const projectsDir = path.join(process.cwd(), 'content/projects');
     const files = await fs.readdir(projectsDir);
     const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
 
