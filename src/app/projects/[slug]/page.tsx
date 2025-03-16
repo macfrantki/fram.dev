@@ -8,7 +8,10 @@ import { getProjectBySlug, getProjectSlugs } from '@/lib/content-api';
 import TableOfContents from '@/components/mdx/TableOfContents';
 import ReadingTime from '@/components/mdx/ReadingTime';
 
+// Force static generation for this route
 export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs();

@@ -4,6 +4,11 @@ import { Metadata } from 'next';
 import { getAllServices } from '@/lib/mdx';
 import ServiceContent from './ServiceContent';
 
+// Force static generation for this route
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
+
 interface ServicePageProps {
   params: {
     slug: string;
