@@ -72,4 +72,4 @@ export interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
-} 
+}

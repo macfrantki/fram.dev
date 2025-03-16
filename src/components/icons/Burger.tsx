@@ -15,4 +15,4 @@ export const BurgerIcon: React.FC<BurgerIconProps> = ({ className = 'size-10' })
   </svg>
 );
 
-export default BurgerIcon; 
+export default BurgerIcon;

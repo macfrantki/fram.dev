@@ -5,24 +5,24 @@ import ServiceMDX from './ServiceMDX';
 import { Suspense } from 'react';
 
 export async function ServiceContent({ slug }: { slug: string }) {
-  const category = SERVICE_CATEGORIES.find(cat => cat.id === slug);
+  const category = SERVICE_CATEGORIES.find((cat) => cat.id === slug);
   if (!category) {
     notFound();
   }
 
   const allServices = await getServices();
-  const services = allServices.filter(s => s.category === slug);
+  const services = allServices.filter((s) => s.category === slug);
 
   return (
     <article className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-8">{category.name}</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h1 className="mb-8 text-4xl font-bold">{category.name}</h1>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <div
             key={service.id}
-            className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="rounded-lg bg-white p-6 shadow-md transition-shadow hover:shadow-lg dark:bg-gray-800"
           >
-            <h2 className="text-2xl font-semibold mb-4 text-primary">{service.name}</h2>
+            <h2 className="mb-4 text-2xl font-semibold text-primary">{service.name}</h2>
             <div className="text-gray-600 dark:text-gray-300">
               <Suspense fallback={<p>{service.description}</p>}>
                 <ServiceMDX slug={service.slug} />
@@ -33,4 +33,4 @@ export async function ServiceContent({ slug }: { slug: string }) {
       </div>
     </article>
   );
-} 
+}

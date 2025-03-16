@@ -41,12 +41,7 @@ export default function MobileServices({
             className="rounded-full bg-primary/10 p-3 text-primary transition-colors hover:bg-primary/20"
           >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5l7 7-7 7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
@@ -61,4 +56,4 @@ export default function MobileServices({
       </div>
     </div>
   );
-} 
+}

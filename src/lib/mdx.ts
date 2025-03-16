@@ -31,7 +31,7 @@ export const getAllServices = cache(async (): Promise<Service[]> => {
   try {
     const servicesDir = path.join(process.cwd(), 'content', 'services');
     const files = await fs.readdir(servicesDir);
-    const mdxFiles = files.filter(file => file.endsWith('.mdx'));
+    const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
 
     const services = await Promise.all(
       mdxFiles.map(async (file) => {
@@ -63,4 +63,4 @@ export const getAllServices = cache(async (): Promise<Service[]> => {
     console.error('Error reading service files:', error);
     return [];
   }
-}); 
+});

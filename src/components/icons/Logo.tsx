@@ -4,10 +4,14 @@ import { SVGProps } from 'react';
 import { cn } from '@/utils/cn';
 import { LogoProps } from '@/types/components';
 
-export default function Logo({ className, color = "#EC003F", ...props }: LogoProps & SVGProps<SVGSVGElement>) {
+export default function Logo({
+  className,
+  color = '#EC003F',
+  ...props
+}: LogoProps & SVGProps<SVGSVGElement>) {
   return (
     <svg
-      className={cn("size-8", className)}
+      className={cn('size-8', className)}
       viewBox="0 0 7 9"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -39,4 +43,4 @@ export default function Logo({ className, color = "#EC003F", ...props }: LogoPro
       />
     </svg>
   );
-} 
+}

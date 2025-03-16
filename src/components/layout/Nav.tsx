@@ -34,7 +34,8 @@ export default function Navbar() {
                     : 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl'
                 }`}
               >
-                {companyName.first}<span className="text-primary">{companyName.last}</span>
+                {companyName.first}
+                <span className="text-primary">{companyName.last}</span>
               </span>
             </Link>
 
@@ -79,7 +80,8 @@ export default function Navbar() {
             <Link href="/" className="flex items-center">
               <Logo />
               <span className="ml-2 text-2xl font-semibold text-gray-900">
-                {companyName.first}<span className="text-primary">{companyName.last}</span>
+                {companyName.first}
+                <span className="text-primary">{companyName.last}</span>
               </span>
             </Link>
 
@@ -116,7 +118,8 @@ export default function Navbar() {
                   >
                     <Logo />
                     <span className="ml-2 text-2xl font-semibold text-gray-900">
-                      {companyName.first}<span className="text-primary">{companyName.last}</span>
+                      {companyName.first}
+                      <span className="text-primary">{companyName.last}</span>
                     </span>
                   </Link>
 
@@ -178,4 +181,4 @@ export default function Navbar() {
       </AnimatePresence>
     </>
   );
-} 
+}

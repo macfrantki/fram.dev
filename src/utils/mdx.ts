@@ -51,7 +51,7 @@ export function getAllProjects() {
         const dateB = new Date(b?.date || 0);
         return dateB.getTime() - dateA.getTime();
       });
-    
+
     return projects;
   } catch (error) {
     console.error('Error getting all projects:', error);
@@ -77,7 +77,7 @@ export async function getProjectData(slug: string) {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
     const mdxSource = await serialize(content);
-    
+
     return {
       slug,
       frontmatter: data as ProjectFrontmatter,
@@ -87,4 +87,4 @@ export async function getProjectData(slug: string) {
     console.error(`Error getting project data for slug ${slug}:`, error);
     throw error;
   }
-} 
+}

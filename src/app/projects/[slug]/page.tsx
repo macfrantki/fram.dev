@@ -10,10 +10,14 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   try {
     const { frontmatter } = await getProjectData(params.slug);
-    
+
     return {
       title: `${frontmatter.title} | Project`,
       description: frontmatter.description,
@@ -29,70 +33,70 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
   try {
     const { frontmatter, content } = await getProjectData(params.slug);
-    
+
     return (
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-10">
           <div className="mb-4">
-            <Link href="/projects" className="text-primary hover:underline mb-6 inline-block">
+            <Link href="/projects" className="mb-6 inline-block text-primary hover:underline">
               ← Back to Projects
             </Link>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{frontmatter.title}</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">{frontmatter.description}</p>
-          <div className="flex flex-wrap gap-2 mb-8">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">{frontmatter.title}</h1>
+          <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">{frontmatter.description}</p>
+          <div className="mb-8 flex flex-wrap gap-2">
             {frontmatter.technologies.map((tech) => (
               <Chip key={tech}>{tech}</Chip>
             ))}
           </div>
-          <div className="flex gap-4 mb-8">
+          <div className="mb-8 flex gap-4">
             {frontmatter.demoUrl && (
-              <a 
-                href={frontmatter.demoUrl} 
-                target="_blank" 
+              <a
+                href={frontmatter.demoUrl}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+                className="rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary/90"
               >
                 View Demo
               </a>
             )}
             {frontmatter.sourceUrl && (
-              <a 
-                href={frontmatter.sourceUrl} 
-                target="_blank" 
+              <a
+                href={frontmatter.sourceUrl}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                className="rounded-md bg-gray-200 px-4 py-2 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
               >
                 View Source
               </a>
             )}
           </div>
         </header>
-        
+
         {/* Cover Image */}
-        <div className="mb-10 rounded-lg overflow-hidden shadow-lg">
-          <Image 
+        <div className="mb-10 overflow-hidden rounded-lg shadow-lg">
+          <Image
             src={frontmatter.coverImage}
             alt={frontmatter.title}
             width={1200}
             height={675}
-            className="w-full h-auto"
+            className="h-auto w-full"
           />
         </div>
-        
+
         {/* Project Details */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-3">
-            <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+            <h2 className="mb-4 text-2xl font-bold">Project Overview</h2>
             {/* Render the MDX content */}
             <div className="prose dark:prose-invert max-w-none">
               <div dangerouslySetInnerHTML={{ __html: content.compiledSource }} />
             </div>
           </div>
           <div className="md:col-span-1">
-            <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">Project Details</h3>
+            <div className="rounded-lg bg-gray-100 p-6 dark:bg-gray-800">
+              <h3 className="mb-4 text-xl font-bold">Project Details</h3>
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-600 dark:text-gray-300">Client</h4>
@@ -108,9 +112,12 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-600 dark:text-gray-300">Tags</h4>
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <div className="mt-2 flex flex-wrap gap-2">
                     {frontmatter.tags.map((tag) => (
-                      <span key={tag} className="text-sm bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">
+                      <span
+                        key={tag}
+                        className="rounded bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -126,4 +133,4 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     console.error('Error rendering project page:', error);
     notFound();
   }
-} 
+}

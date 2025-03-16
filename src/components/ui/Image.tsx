@@ -29,9 +29,9 @@ export default function Image({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div 
+    <div
       className={cn(
-        'overflow-hidden', 
+        'overflow-hidden',
         isLoading ? 'animate-pulse bg-gray-200 dark:bg-gray-800' : '',
         fill ? 'relative' : '',
         aspectRatio,
@@ -41,9 +41,7 @@ export default function Image({
       <NextImage
         className={cn(
           'duration-700 ease-in-out',
-          isLoading
-            ? 'scale-110 blur-sm grayscale'
-            : 'scale-100 blur-0 grayscale-0',
+          isLoading ? 'scale-110 blur-sm grayscale' : 'scale-100 blur-0 grayscale-0',
           imgClassName
         )}
         src={src}
@@ -56,4 +54,4 @@ export default function Image({
       />
     </div>
   );
-} 
+}

@@ -7,9 +7,5 @@ export default async function ServiceMDX({ slug }: { slug: string }) {
     return null;
   }
 
-  return (
-    <div className="prose prose-sm dark:prose-invert max-w-none">
-      {content.content}
-    </div>
-  );
-} 
+  return <div className="prose prose-sm dark:prose-invert max-w-none">{content.content}</div>;
+}

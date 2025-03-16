@@ -41,4 +41,4 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
 
   return <ServiceContent content={content.content} />;
-} 
+}

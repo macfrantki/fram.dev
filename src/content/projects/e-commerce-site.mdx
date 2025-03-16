@@ -53,10 +53,10 @@ export async function getStaticProps({ params }) {
     }`,
     { slug: params.slug }
   );
-  
+
   return {
     props: { product },
-    revalidate: 60
+    revalidate: 60,
   };
 }
 ```
@@ -108,4 +108,4 @@ The new e-commerce platform resulted in:
 - 67% faster page load times
 - 28% increase in average order value
 
-The client now has a scalable, maintainable platform that provides their customers with a seamless shopping experience while giving them powerful tools to manage their online business. 
+The client now has a scalable, maintainable platform that provides their customers with a seamless shopping experience while giving them powerful tools to manage their online business.

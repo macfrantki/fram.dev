@@ -10,4 +10,4 @@ export interface ProjectFrontmatter {
   featured?: boolean;
   demoUrl?: string;
   sourceUrl?: string;
-} 
+}

@@ -45,4 +45,4 @@ export default function ServiceCard({ service, variant }: ServiceCardProps) {
       </motion.div>
     </Link>
   );
-} 
+}

@@ -16,15 +16,15 @@ interface ProjectCardProps {
   index: number;
 }
 
-export default function ProjectCard({ 
-  slug, 
-  title, 
-  description, 
-  coverImage, 
-  technologies, 
-  category, 
-  featured, 
-  index 
+export default function ProjectCard({
+  slug,
+  title,
+  description,
+  coverImage,
+  technologies,
+  category,
+  featured,
+  index,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -49,16 +49,14 @@ export default function ProjectCard({
             </div>
           )}
         </div>
-        
+
         <div className="p-5">
           <div className="mb-2 text-xs text-gray-500">{category}</div>
           <h3 className="mb-2 text-xl font-bold transition-colors group-hover:text-primary">
             {title}
           </h3>
-          <p className="mb-4 text-sm text-gray-700 line-clamp-2">
-            {description}
-          </p>
-          
+          <p className="mb-4 line-clamp-2 text-sm text-gray-700">{description}</p>
+
           <div className="flex flex-wrap gap-2">
             {technologies.slice(0, 3).map((tech) => (
               <span
@@ -78,4 +76,4 @@ export default function ProjectCard({
       </Link>
     </motion.div>
   );
-} 
+}

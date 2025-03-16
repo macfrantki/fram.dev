@@ -23,11 +23,9 @@ export default function Hero() {
           animate={mobileControls}
         >
           <Logo className="size-24 sm:size-32" />
-          <motion.h2
-            variants={fadeIn}
-            className="mt-4 text-center text-4xl font-bold sm:text-5xl"
-          >
-            {companyName.first}<span className="text-primary">{companyName.last}</span>
+          <motion.h2 variants={fadeIn} className="mt-4 text-center text-4xl font-bold sm:text-5xl">
+            {companyName.first}
+            <span className="text-primary">{companyName.last}</span>
           </motion.h2>
         </motion.div>
 
@@ -41,26 +39,17 @@ export default function Hero() {
               ref={desktopRef}
               className="pointer-events-none text-center text-4xl font-bold leading-none tracking-tight sm:text-left md:text-5xl lg:text-7xl xl:text-8xl"
             >
-              <motion.span
-                variants={slideInLeft}
-                className="block"
-              >
+              <motion.span variants={slideInLeft} className="block">
                 CODE THAT WORKS
               </motion.span>
-              <motion.span
-                variants={slideInRight}
-                className="block text-primary"
-              >
+              <motion.span variants={slideInRight} className="block text-primary">
                 DESIGN THAT SELLS
               </motion.span>
-              <motion.span
-                variants={slideInLeft}
-                className="block"
-              >
+              <motion.span variants={slideInLeft} className="block">
                 RESULTS THAT LAST
               </motion.span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={fadeIn}
               initial="hidden"
               animate={desktopControls}
@@ -69,7 +58,7 @@ export default function Hero() {
               Custom-built websites and software solutions that convert visitors into customers. No
               templates. Just powerful digital experiences that drive business growth.
             </motion.p>
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               initial="hidden"
               animate={desktopControls}

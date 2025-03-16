@@ -21,4 +21,4 @@ export default function Stats({ className = '' }: StatsProps) {
       </div>
     </div>
   );
-} 
+}

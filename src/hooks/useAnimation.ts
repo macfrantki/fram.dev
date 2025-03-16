@@ -15,11 +15,11 @@ export function useInViewAnimation(threshold = 0.1): UseAnimationHookResult {
   const controls = useAnimation();
   const elementRef = useRef<HTMLElement | null>(null);
   const [_inView, setInView] = useState(false);
-  
+
   useEffect(() => {
     const currentElement = elementRef.current;
     if (!currentElement) return;
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         const isInView = entry.isIntersecting;
@@ -30,19 +30,19 @@ export function useInViewAnimation(threshold = 0.1): UseAnimationHookResult {
       },
       { threshold }
     );
-    
+
     observer.observe(currentElement);
-    
+
     return () => {
       if (currentElement) {
         observer.unobserve(currentElement);
       }
     };
   }, [controls, threshold]);
-  
-  return { 
+
+  return {
     controls,
-    ref: elementRef
+    ref: elementRef,
   };
 }
 
@@ -53,14 +53,14 @@ export function useInViewAnimation(threshold = 0.1): UseAnimationHookResult {
  */
 export function useDelayedAnimation(delay = 0.3): AnimationControls {
   const controls = useAnimation();
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       controls.start('visible');
     }, delay * 1000);
-    
+
     return () => clearTimeout(timer);
   }, [controls, delay]);
-  
+
   return controls;
-} 
+}

@@ -94,17 +94,17 @@ const authenticateUser = async (credentials: UserCredentials): Promise<AuthResul
   try {
     // First-factor authentication
     const authResponse = await api.authenticate(credentials);
-    
+
     // Store tokens securely
     await SecureStorage.setItem('accessToken', authResponse.accessToken);
-    
+
     // Set up real-time connection
     initializeRealTimeConnection(authResponse.userId);
-    
+
     // Pre-fetch user data
     dispatch(fetchUserAccounts());
     dispatch(fetchRecentTransactions());
-    
+
     return { success: true, userId: authResponse.userId };
   } catch (error) {
     logAuthError(error);
@@ -123,4 +123,4 @@ Since its launch, the application has achieved:
 - 78% reduction in customer service inquiries
 - 40% increase in new account registrations
 
-The application has become the cornerstone of FinanceFlow's digital strategy, enabling them to scale their operations while maintaining a personalized banking experience for each user. 
+The application has become the cornerstone of FinanceFlow's digital strategy, enabling them to scale their operations while maintaining a personalized banking experience for each user.

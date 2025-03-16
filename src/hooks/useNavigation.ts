@@ -42,4 +42,4 @@ export const useNavigation = () => {
   };
 };
 
-export default useNavigation; 
+export default useNavigation;

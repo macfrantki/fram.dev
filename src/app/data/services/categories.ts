@@ -21,4 +21,4 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     name: 'Consulting',
     order: 4,
   },
-]; 
+];

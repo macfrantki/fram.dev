@@ -9,4 +9,4 @@ export const metadata = {
 export default async function ServicesPage() {
   const services = await getServices();
   return <Services services={services} />;
-} 
+}

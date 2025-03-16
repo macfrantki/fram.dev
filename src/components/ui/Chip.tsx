@@ -10,13 +10,7 @@ interface ChipProps {
   onClick?: () => void;
 }
 
-export function Chip({
-  label,
-  color = 'default',
-  size = 'md',
-  className,
-  onClick,
-}: ChipProps) {
+export function Chip({ label, color = 'default', size = 'md', className, onClick }: ChipProps) {
   const colorStyles = {
     default: 'bg-gray-100 text-gray-800',
     primary: 'bg-primary/10 text-primary',
@@ -39,7 +33,7 @@ export function Chip({
       <button
         type="button"
         className={cn(
-          'inline-flex items-center rounded-full font-medium border-none',
+          'inline-flex items-center rounded-full border-none font-medium',
           colorStyles[color],
           sizeStyles[size],
           'cursor-pointer hover:opacity-80',
@@ -70,4 +64,4 @@ export function Chip({
       {label}
     </span>
   );
-} 
+}

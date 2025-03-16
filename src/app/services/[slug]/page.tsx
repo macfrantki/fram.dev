@@ -7,10 +7,6 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ServicePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default function ServicePage({ params }: { params: { slug: string } }) {
   return <ServiceContent slug={params.slug} />;
-} 
+}

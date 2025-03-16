@@ -14,7 +14,7 @@ interface ServicesProps {
 export default function Services({ services }: ServicesProps) {
   const [selectedCategoryId, setSelectedCategoryId] = useState('web-design');
 
-  const selectedServices = services.filter(s => s.category === selectedCategoryId);
+  const selectedServices = services.filter((s) => s.category === selectedCategoryId);
   const selectedCategory = SERVICE_CATEGORIES.find((cat) => cat.id === selectedCategoryId);
 
   const handlePrevCategory = () => {

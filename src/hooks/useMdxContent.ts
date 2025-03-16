@@ -23,4 +23,4 @@ export function useMdxContent(slug: string) {
   }, [slug]);
 
   return { content, isLoading, error };
-} 
+}
