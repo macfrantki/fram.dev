@@ -1,13 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
 import { cache } from 'react';
 import readingTime from 'reading-time';
-import rehypeSlug from 'rehype-slug';
-import rehypeCodeTitles from 'rehype-code-titles';
-import rehypePrism from 'rehype-prism-plus';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { z } from 'zod';
 
 // Define content paths
@@ -151,7 +146,7 @@ export const getProjectSlugs = cache(async () => {
   }
 });
 
-// Get project data by slug with improved MDX processing
+// Get project data by slug with improved MDX processing for RSC
 export const getProjectBySlug = cache(async (slug: string) => {
   try {
     const filePath = path.join(PROJECTS_PATH, `${slug}.mdx`);
@@ -170,15 +165,22 @@ export const getProjectBySlug = cache(async (slug: string) => {
     // Calculate reading time
     const readingTimeResult = readingTime(content);
     
-    // Process MDX content with enhanced plugins
-    const mdxSource = await serialize(content, {
-      mdxOptions: {
-        rehypePlugins: [
-          rehypeSlug,
-          rehypeCodeTitles,
-          [rehypePrism, { showLineNumbers: true }],
-          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-        ],
+    // Import the compileMDX function from next-mdx-remote/rsc
+    const { compileMDX } = await import('next-mdx-remote/rsc');
+    
+    // Process MDX content with compileMDX for RSC compatibility
+    const { content: mdxContent } = await compileMDX({
+      source: content,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [
+            (await import('remark-gfm')).default,
+          ],
+          rehypePlugins: [
+            (await import('rehype-slug')).default,
+            [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
+          ],
+        },
       },
     });
     
@@ -188,7 +190,7 @@ export const getProjectBySlug = cache(async (slug: string) => {
     return {
       slug,
       frontmatter,
-      content: mdxSource,
+      content: mdxContent,
       readingTime: readingTimeResult,
       tableOfContents,
     };
@@ -213,20 +215,29 @@ export const getServiceBySlug = cache(async (slug: string) => {
     // Validate frontmatter
     const frontmatter = ServiceFrontmatterSchema.parse(data);
     
-    // Process MDX content with enhanced plugins
-    const mdxSource = await serialize(content, {
-      mdxOptions: {
-        rehypePlugins: [
-          rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-        ],
+    // Import the compileMDX function from next-mdx-remote/rsc
+    const { compileMDX } = await import('next-mdx-remote/rsc');
+    
+    // Process MDX content with compileMDX for RSC compatibility
+    const { content: mdxContent } = await compileMDX({
+      source: content,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [
+            (await import('remark-gfm')).default,
+          ],
+          rehypePlugins: [
+            (await import('rehype-slug')).default,
+            [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
+          ],
+        },
       },
     });
     
     return {
       slug,
       frontmatter,
-      content: mdxSource,
+      content: mdxContent,
     };
   } catch (error) {
     console.error(`Error fetching service ${slug}:`, error);
@@ -244,19 +255,28 @@ export const getAboutContent = cache(async () => {
     // Validate frontmatter
     const frontmatter = AboutFrontmatterSchema.parse(data);
     
-    // Process MDX content with enhanced plugins
-    const mdxSource = await serialize(content, {
-      mdxOptions: {
-        rehypePlugins: [
-          rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-        ],
+    // Import the compileMDX function from next-mdx-remote/rsc
+    const { compileMDX } = await import('next-mdx-remote/rsc');
+    
+    // Process MDX content with compileMDX for RSC compatibility
+    const { content: mdxContent } = await compileMDX({
+      source: content,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [
+            (await import('remark-gfm')).default,
+          ],
+          rehypePlugins: [
+            (await import('rehype-slug')).default,
+            [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
+          ],
+        },
       },
     });
     
     return {
       frontmatter,
-      content: mdxSource,
+      content: mdxContent,
     };
   } catch (error) {
     console.error('Error fetching about content:', error);

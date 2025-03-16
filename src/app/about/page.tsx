@@ -68,7 +68,7 @@ export default async function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
             <div className="prose prose-lg dark:prose-invert max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: aboutData.content.compiledSource }} />
+              {aboutData.content}
             </div>
           </div>
         </div>

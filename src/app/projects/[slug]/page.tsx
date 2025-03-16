@@ -8,7 +8,10 @@ import { getProjectBySlug, getProjectSlugs } from '@/lib/content-api';
 import TableOfContents from '@/components/mdx/TableOfContents';
 import ReadingTime from '@/components/mdx/ReadingTime';
 
+// Force static generation for this route
 export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs();
@@ -147,7 +150,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               <h2 className="mb-4 text-2xl font-bold">Project Overview</h2>
               {/* Render the MDX content */}
               <div className="prose dark:prose-invert max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: content.compiledSource }} />
+                {content}
               </div>
             </div>
             <div className="md:col-span-1">

@@ -3,6 +3,11 @@ import { ServiceContent } from './ServiceContent';
 import { Metadata } from 'next';
 import JsonLd from '@/components/seo/JsonLd';
 
+// Force static generation for this route
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
+
 export function generateStaticParams() {
   return SERVICE_CATEGORIES.map((category) => ({
     slug: category.id,
