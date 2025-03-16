@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import '@/styles/globals.css';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
-import BackgroundPaths from '@/components/BackgroundPaths';
+import Nav from '@/components/layout/Nav';
+import Footer from '@/components/layout/Footer';
+import BackgroundPaths from '@/components/background/BackgroundPaths';
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',

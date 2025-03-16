@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 
-export function BackgroundCircles() {
+export default function BackgroundCircles() {
   return (
     <div className="absolute right-0 top-0 -z-10 h-[300px] w-[300px] overflow-visible sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] lg:h-[600px] lg:w-[600px]">
       <motion.div className="absolute h-[240px] w-[240px] -translate-y-1/4 translate-x-1/4 sm:h-[320px] sm:w-[320px] md:h-[400px] md:w-[400px] lg:h-[480px] lg:w-[480px]">

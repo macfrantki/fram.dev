@@ -1,15 +1,19 @@
-import Hero from './Hero';
-import Services from './components/Services';
-import { getServices } from '@/app/data/services/services';
-import HomeClient from './components/HomeClient';
+import Hero from '@/components/sections/Hero';
+import BackgroundCircles from '@/components/background/BackgroundCircles';
+import BackgroundPaths from '@/components/background/BackgroundPaths';
+import Services from '@/components/sections/Services';
+import { getServices } from '@/services/services/services';
+import HomeClient from '@/components/sections/HomeClient';
 
 export default async function Home() {
   const services = await getServices();
   return (
-    <div className="">
+    <main className="relative">
+      <BackgroundCircles />
+      <BackgroundPaths />
       <Hero />
       <Services services={services} />
       <HomeClient />
-    </div>
+    </main>
   );
 }

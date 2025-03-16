@@ -1,7 +1,9 @@
-import React from 'react';
-// Add underscore prefix to indicate it's intentionally unused
-import { motion as _motion } from 'framer-motion';
+'use client';
+
+import { forwardRef } from 'react';
 import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { ButtonProps } from '@/types/components';
 
 // Define the arrow icon as a separate component
 const ArrowIcon = ({ className = 'h-4 w-4 sm:h-5 sm:w-5 ' }) => (
@@ -15,31 +17,25 @@ const ArrowIcon = ({ className = 'h-4 w-4 sm:h-5 sm:w-5 ' }) => (
   </svg>
 );
 
-interface ButtonProps {
-  children: React.ReactNode;
-  className?: string;
-  href?: string;
-  variant?: 'primary' | 'secondary' | 'outline' | 'contact';
-  size?: 'sm' | 'md' | 'lg';
-  fullWidth?: boolean;
-  withArrow?: boolean;
-  roundedBottom?: boolean;
-  onClick?: () => void;
-  animateOnHover?: boolean;
-}
-
-export default function Button({
+/**
+ * Button component that can be rendered as either a button or link
+ */
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   children,
-  className = '',
-  href,
   variant = 'primary',
   size = 'md',
-  fullWidth = false,
+  href,
+  type = 'button',
+  className = '',
+  disabled = false,
+  isLoading = false,
+  onClick,
   withArrow = false,
   roundedBottom = false,
-  onClick,
+  fullWidth = false,
   animateOnHover = true,
-}: ButtonProps) {
+  ...props
+}, ref) => {
   // Base classes that apply to all button variants
   const baseClasses = `
     group relative flex items-center justify-center 
@@ -69,15 +65,20 @@ export default function Button({
   const widthClasses = fullWidth ? 'w-full' : '';
 
   // Combine all classes
-  const buttonClasses = `
-    ${baseClasses}
-    ${sizeClasses[size]}
-    ${variantClasses[variant]}
-    ${roundedClasses}
-    ${widthClasses}
-    ${className}
-  `;
-
+  const buttonClasses = cn(
+    baseClasses,
+    sizeClasses[size],
+    variantClasses[variant],
+    roundedClasses,
+    widthClasses,
+    className
+  );
+  
+  // Loading state
+  const loadingJsx = isLoading && (
+    <span className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+  );
+  
   // Content with optional arrow
   const content = (
     <>
@@ -90,21 +91,38 @@ export default function Button({
           className={`${size === 'sm' ? 'h-3 w-3' : size === 'lg' ? 'h-5 w-5' : 'h-4 w-4'} relative z-10 stroke-primary group-hover:stroke-backgroundary`}
         />
       )}
+      {loadingJsx}
     </>
   );
-
-  // Return either a link or a button
+  
+  // If href is provided, render as a link
   if (href) {
     return (
-      <Link href={href} className={buttonClasses}>
+      <Link 
+        href={href} 
+        className={buttonClasses}
+        {...props}
+      >
         {content}
       </Link>
     );
   }
-
+  
+  // Otherwise, render as a button
   return (
-    <button onClick={onClick} className={buttonClasses}>
+    <button
+      ref={ref}
+      type={type}
+      className={buttonClasses}
+      disabled={disabled || isLoading}
+      onClick={onClick}
+      {...props}
+    >
       {content}
     </button>
   );
-}
+});
+
+Button.displayName = 'Button';
+
+export default Button;

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Service } from '@/types/services';
-import { SERVICE_CATEGORIES } from '@/app/data/services/categories';
+import { SERVICE_CATEGORIES } from '@/services/services/categories';
 import Stats from './services/Stats';
 import MobileServices from './services/MobileServices';
 import DesktopServices from './services/DesktopServices';
