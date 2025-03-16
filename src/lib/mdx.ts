@@ -16,6 +16,10 @@ export const getMdxContent = cache(async (slug: string) => {
         parseFrontmatter: true,
         mdxOptions: {
           remarkPlugins: [remarkGfm],
+          rehypePlugins: [
+            (await import('rehype-slug')).default,
+            [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
+          ],
         },
       },
     });
