@@ -242,29 +242,46 @@ export const getAboutContent = cache(async () => {
     const { data, content } = matter(source);
 
     // Validate frontmatter
-    const frontmatter = AboutFrontmatterSchema.parse(data);
+    try {
+      const frontmatter = AboutFrontmatterSchema.parse(data);
 
-    // Import the compileMDX function from next-mdx-remote/rsc
-    const { compileMDX } = await import('next-mdx-remote/rsc');
+      try {
+        // Import the compileMDX function from next-mdx-remote/rsc
+        const { compileMDX } = await import('next-mdx-remote/rsc');
 
-    // Process MDX content with compileMDX for RSC compatibility
-    const { content: mdxContent } = await compileMDX({
-      source: content,
-      options: {
-        mdxOptions: {
-          remarkPlugins: [(await import('remark-gfm')).default],
-          rehypePlugins: [
-            (await import('rehype-slug')).default,
-            [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
-          ],
-        },
-      },
-    });
+        // Simplify MDX processing - use fewer plugins to avoid potential issues
+        const { content: mdxContent } = await compileMDX({
+          source: content,
+          options: {
+            mdxOptions: {
+              remarkPlugins: [(await import('remark-gfm')).default],
+              // Temporarily remove rehype plugins that might be causing issues
+              // rehypePlugins: [
+              //   (await import('rehype-slug')).default,
+              //   [(await import('rehype-autolink-headings')).default, { behavior: 'wrap' }],
+              // ],
+            },
+          },
+        });
 
-    return {
-      frontmatter,
-      content: mdxContent,
-    };
+        return {
+          frontmatter,
+          content: mdxContent,
+        };
+      } catch (mdxError) {
+        console.error('Error compiling MDX for about page:', mdxError);
+
+        // Return the frontmatter but use raw text instead of JSX
+        // JSX can't be used directly in server-side Node context
+        return {
+          frontmatter,
+          content: `# ${frontmatter.title}\n\n${frontmatter.excerpt}\n\nFull content is temporarily unavailable.`,
+        };
+      }
+    } catch (validationError) {
+      console.error('Validation error in about.mdx:', validationError);
+      return null;
+    }
   } catch (error) {
     console.error('Error fetching about content:', error);
     return null;
